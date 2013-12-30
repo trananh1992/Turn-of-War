@@ -7,24 +7,24 @@
 TEST-*
 
 #licensed textures
-*airfac.png
-*landfac.png
-*seafac.png
-*oilfield.png
-*oilwell.png
-*tank.png
-*heavytank.png
-*rockettruck.png
-*antiair.png
-*commandvehicle.png
-*fighter.png
-*bomber.png
-*stealth.png
-*destroyer.png
-*antiairboat.png
-*submarine.png
-*battleship.png
-*missilesub.png
+airfac.png
+landfac.png
+seafac.png
+oilfield.png
+oilwell.png
+tank.png
+heavytank.png
+rockettruck.png
+antiair.png
+commandvehicle.png
+fighter.png
+bomber.png
+stealth.png
+destroyer.png
+antiairboat.png
+submarine.png
+battleship.png
+missilesub.png
 
 # built application files
 *.apk

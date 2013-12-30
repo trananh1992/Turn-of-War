@@ -1,6 +1,6 @@
 Turn of War
 ===================
-An open-source GPLv3 turn based game for Android in development by Edward Woodhouse, Turn of War is a fork of DragonWars.
+An open-source GPLv3 turn based game for Android in development by Edward Woodhouse, Turn of War is a fork of Dragon Wars.
 Copyright (C) 2013 Ed Woodhouse <edwoodhou@gmail.com>
 
 Features
@@ -23,7 +23,7 @@ add team colour picker https://github.com/LarsWerkman/HoloColorPicker
 
 
 Credits:
-DragonWars team: Weihua Zhang, Jon Playdon, Alex Remedios, Robert Harmer, Douglas McIntyre, Mateusz Kowalczyk, GNU general public license Version 3
+Dragon Wars team: Weihua Zhang, Jon Playdon, Alex Remedios, Robert Harmer, Douglas McIntyre, Mateusz Kowalczyk, GNU general public license Version 3
 Banana-brick font by Artmaker, OFL (SIL Open Font License) http://openfontlibrary.org/en/font/banana-brick#Banana%20Brick-Regular
 Railway Sans by Greg Fleming http://openfontlibrary.org/en/font/railway-sans
 Glass Library Copyright Joseph Czubiak 2013, Apache License Version 2.0 https://github.com/jcz530/Glass

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ed.turnofwar"
+    package="ed.turnofwar"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.ed.turnofwar.MainGyroSplash"
+            android:name="ed.turnofwar.MainGyroSplash"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Black.NoTitleBar" >
             <intent-filter>
@@ -26,11 +26,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.ed.turnofwar.MenuActivity"
+            android:name="ed.turnofwar.MenuActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="com.ed.turnofwar.GameActivity"
+            android:name="ed.turnofwar.GameActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_game"
             android:theme="@style/FullscreenTheme" >
@@ -39,23 +39,23 @@
         <uses-library android:name="android.test.runner" />
 
         <activity
-            android:name="com.ed.turnofwar.MapSelectActivity"
+            android:name="ed.turnofwar.MapSelectActivity"
             android:label="@string/title_activity_map_select" >
         </activity>
         <activity
-            android:name="com.ed.turnofwar.StatisticsActivity"
+            android:name="ed.turnofwar.StatisticsActivity"
             android:label="@string/title_activity_statistics" >
         </activity>
         <activity
-            android:name="com.ed.turnofwar.HelpActivity"
+            android:name="ed.turnofwar.HelpActivity"
             android:label="@string/title_activity_help" >
         </activity>
         <activity
-            android:name="com.ed.turnofwar.Results"
+            android:name="ed.turnofwar.Results"
             android:label="@string/title_activity_results" >
         </activity>
         <activity
-            android:name="com.ed.turnofwar.PlayerSelectActivity"
+            android:name="ed.turnofwar.PlayerSelectActivity"
             android:label="@string/title_activity_player_select" >
         </activity>
     </application>

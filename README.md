@@ -1,26 +1,25 @@
 Turn of War
 ===================
-An open-source GPLv3 turn based game for Android in development by Edward Woodhouse and Mateusz Kowalczyk, Turn of War is a fork of DragonWars.
+An open-source GPLv3 turn based game for Android in development by Edward Woodhouse, Turn of War is a fork of DragonWars.
 Copyright (C) 2013 Ed Woodhouse <edwoodhou@gmail.com>
-(C) 2013 Mateusz Kowalczyk <fuuzetsu@fuuzetsu.co.uk>
 
 Features
 ===================
--Terrain affects movement and defence 
--Submarines and stealth units only visible to owner, fighters + stealth detect and attack stealth, cruiser + sub detect and attack sub 
--Move marker indicating a unit has moved, unit HP, automatic capture progress 
--Repair system, including costs and correct unit/property match-ups 
--Ally and enemy unit ranges always available, with smart highlighting of valid targets 
--8 player colours
+Terrain affects movement and defence 
+Submarines and stealth units only visible to owner, fighters + stealth detect and attack stealth, cruiser + sub detect and attack sub 
+Move marker indicating a unit has moved, unit HP, automatic capture progress 
+Repair system, including costs and correct unit/property match-ups 
+Ally and enemy unit ranges always available, with smart highlighting of valid targets 
+8 player colours
 
 
 TODO
 ===================
--Serious issue that if device goes into sleep mode or the game is moved to background, game resets and move progress is lost
--add saving
--add strategic pinch zoom
--add multiplayer 
--add team colour picker https://github.com/LarsWerkman/HoloColorPicker
+Serious issue that if device goes into sleep mode or the game is moved to background, game resets and move progress is lost
+add saving
+add strategic pinch zoom
+add multiplayer 
+add team colour picker https://github.com/LarsWerkman/HoloColorPicker
 
 
 Credits:

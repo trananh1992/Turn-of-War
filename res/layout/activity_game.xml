@@ -18,7 +18,7 @@
          android:fitsSystemWindows.
     -->
 
-    <com.group7.dragonwars.GameView
+    <com.ed.turnofwar.GameView
         android:id="@+id/gameView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" />

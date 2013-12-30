@@ -1,0 +1,53 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/glass"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainGyroSplash" >
+
+    <ImageView
+        android:id="@+id/glass_imageview1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/planes"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/glass_imageview2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/planes2"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/glass_imageview3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/tanks"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/turnofwartitle" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true" />
+
+    </RelativeLayout>
+
+</FrameLayout>

@@ -1,22 +1,24 @@
 /* This file is part of Dragon Wars.
- *
- * Dragon Wars is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * Dragon Wars is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with Dragon Wars.  If not, see <http://www.gnu.org/licenses/>.
- */
-
+*
+* Dragon Wars is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* Dragon Wars is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with Dragon Wars. If not, see <http://www.gnu.org/licenses/>.
+*/
 package com.group7.dragonwars;
 
+
 import java.text.DecimalFormat;
+
+import com.group7.dragonwars.engine.Database.Database;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -26,8 +28,6 @@ import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-
-import com.group7.dragonwars.engine.Database.Database;
 
 public class StatisticsActivity extends Activity implements OnClickListener {
 
@@ -84,7 +84,7 @@ public class StatisticsActivity extends Activity implements OnClickListener {
     @Override
     public final void onClick(final View v) {
         if (v == this.btnMenu) {
-            Intent intent = new Intent(this, MainMenuActivity.class);
+            Intent intent = new Intent(this, MenuActivity.class);
             startActivity(intent);
             finish();
         }

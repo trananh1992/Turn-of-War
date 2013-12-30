@@ -1,20 +1,41 @@
-/* This file is part of Dragon Wars.
+/*
+ * This file is part of TurnOfWar which is a fork of Dragon Wars
+ * as of 20/11/2013.
  *
- * Dragon Wars is free software: you can redistribute it and/or modify
+ * Copyright (C) 2013 Ed Woodhouse <edwoodhou@gmail.com>
+ *           (C) 2013 Mateusz Kowalczyk <fuuzetsu@fuuzetsu.co.uk>
+ *
+ * TurnOfWar is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Dragon Wars is distributed in the hope that it will be useful,
+ * TurnOfWar is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Dragon Wars.  If not, see <http://www.gnu.org/licenses/>.
+ * along with TurnOfWar. If not, see <http://www.gnu.org/licenses/>.
  */
+/* This file is part of Dragon Wars.
+*
+* Dragon Wars is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* Dragon Wars is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with Dragon Wars. If not, see <http://www.gnu.org/licenses/>.
+*/
 
 package com.group7.dragonwars;
+
 
 import java.util.Map;
 
@@ -27,11 +48,12 @@ import com.group7.dragonwars.engine.MapReader;
 import com.group7.dragonwars.engine.Statistics;
 import com.group7.dragonwars.engine.Database.Database;
 
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
+//import android.view.KeyEvent;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -76,24 +98,13 @@ public class GameActivity extends Activity {
             Log.d(TAG, "map is null");
             System.exit(1);
         }
-
+        //getWindow().setFormat(PixelFormat.RGBA_8888); //fix banding which ruined all my nice images
         setContentView(R.layout.activity_game);
         GameView gameView = (GameView) this.findViewById(R.id.gameView);
         state = new GameState(map, new Logic(), map.getPlayers(), gameView);
         Button menuButton = (Button) this.findViewById(R.id.menuButton);
         menuButton.setOnClickListener(gameView);
         gameView.setState(state, this);
-    }
-
-    @Override
-    public final boolean onKeyDown(final int keyCode, final KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_MENU) {
-            GameView gameView = (GameView) this.findViewById(R.id.gameView);
-            gameView.showMenu();
-            return true;
-        }
-
-        return super.onKeyDown(keyCode, event);
     }
 
     public final void endGame() {

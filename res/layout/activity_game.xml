@@ -30,6 +30,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="top|center_horizontal"
         android:minHeight="0dp"
-        android:text="Menu" />
+        android:text="End Turn" />
 
 </FrameLayout>

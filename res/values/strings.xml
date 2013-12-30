@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
-
-    <string name="app_name">Dragon Wars</string>
+    <string name="app_name">Turn Of War</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
@@ -13,5 +12,4 @@
     <string name="title_activity_player_select">PlayerSelectActivity</string>
     <string name="title_activity_statistics">Statistics</string>
     <string name="title_activity_help">Help</string>
-
 </resources>

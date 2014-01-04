@@ -51,19 +51,19 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 
-import ed.turnofwar.engine.BitmapChanger;
-import ed.turnofwar.engine.Building;
-import ed.turnofwar.engine.DrawableMapObject;
-import ed.turnofwar.engine.FloatPair;
-import ed.turnofwar.engine.GameField;
-import ed.turnofwar.engine.GameFinishedException;
-import ed.turnofwar.engine.GameMap;
-import ed.turnofwar.engine.GameState;
-import ed.turnofwar.engine.Logic;
-import ed.turnofwar.engine.Pair;
-import ed.turnofwar.engine.Player;
-import ed.turnofwar.engine.Position;
-import ed.turnofwar.engine.Unit;
+import uk.co.fuuzetsu.turnofwar.engine.BitmapChanger;
+import uk.co.fuuzetsu.turnofwar.engine.Building;
+import uk.co.fuuzetsu.turnofwar.engine.DrawableMapObject;
+import uk.co.fuuzetsu.turnofwar.engine.FloatPair;
+import uk.co.fuuzetsu.turnofwar.engine.GameField;
+import uk.co.fuuzetsu.turnofwar.engine.GameFinishedException;
+import uk.co.fuuzetsu.turnofwar.engine.GameMap;
+import uk.co.fuuzetsu.turnofwar.engine.GameState;
+import uk.co.fuuzetsu.turnofwar.engine.Logic;
+import uk.co.fuuzetsu.turnofwar.engine.Pair;
+import uk.co.fuuzetsu.turnofwar.engine.Player;
+import uk.co.fuuzetsu.turnofwar.engine.Position;
+import uk.co.fuuzetsu.turnofwar.engine.Unit;
 
 /* Please tell me if the below causes problems, Android/Eclipse
  * suddenly decided to refuse to compile anything without it
@@ -213,32 +213,32 @@ public final class GameView extends SurfaceView implements
 		putGroup("Units", map.getUnitMap());
 		putGroup("Buildings", map.getBuildingMap());
 
-		putResource("Misc", "devairfac", "drawable", "ed.turnofwar",
+		putResource("Misc", "devairfac", "drawable", "uk.co.fuuzetsu.turnofwar",
 				"devairfac"); // the buildings to swap
-		putResource("Misc", "devlandfac", "drawable", "ed.turnofwar",
+		putResource("Misc", "devlandfac", "drawable", "uk.co.fuuzetsu.turnofwar",
 				"devlandfac");
-		putResource("Misc", "devseafac", "drawable", "ed.turnofwar",
+		putResource("Misc", "devseafac", "drawable", "uk.co.fuuzetsu.turnofwar",
 				"devseafac");
-		putResource("Misc", "devoilfield", "drawable", "ed.turnofwar",
+		putResource("Misc", "devoilfield", "drawable", "uk.co.fuuzetsu.turnofwar",
 				"devoilfield");
-		putResource("Misc", "devoilrig", "drawable", "ed.turnofwar",
+		putResource("Misc", "devoilrig", "drawable", "uk.co.fuuzetsu.turnofwar",
 				"devoilrig");
-		putResource("Misc", "devhq", "drawable", "ed.turnofwar", "devhq");
-		putResource("Misc", "flag", "drawable", "ed.turnofwar", "flag");
-		putResource("Misc", "stealthed", "drawable", "ed.turnofwar",
+		putResource("Misc", "devhq", "drawable", "uk.co.fuuzetsu.turnofwar", "devhq");
+		putResource("Misc", "flag", "drawable", "uk.co.fuuzetsu.turnofwar", "flag");
+		putResource("Misc", "stealthed", "drawable", "uk.co.fuuzetsu.turnofwar",
 				"stealthed");
 
 		/* Load selector and highlighters */
-		putResource("Highlighters", "selector", "drawable", "ed.turnofwar",
+		putResource("Highlighters", "selector", "drawable", "uk.co.fuuzetsu.turnofwar",
 				"selector");
-		putResource("Highlighters", "highlight", "drawable", "ed.turnofwar",
+		putResource("Highlighters", "highlight", "drawable", "uk.co.fuuzetsu.turnofwar",
 				"highlighter");
 		putResource("Highlighters", "path_highlight", "drawable",
-				"ed.turnofwar", "pathHighlighter");
+				"uk.co.fuuzetsu.turnofwar", "pathHighlighter");
 		putResource("Highlighters", "attack_highlight", "drawable",
-				"ed.turnofwar", "attackHighlighter");
+				"uk.co.fuuzetsu.turnofwar", "attackHighlighter");
 		putResource("Highlighters", "target_highlight", "drawable",
-				"ed.turnofwar", "targetHighlighter");
+				"uk.co.fuuzetsu.turnofwar", "targetHighlighter");
 		loadBorders();
 		/* Prerender combined map */
 
@@ -271,7 +271,7 @@ public final class GameView extends SurfaceView implements
 																	// otherwise
 					if (uGfx.getKey().equals(original)) {
 						putResource("Misc", trimmed, "drawable",
-								"ed.turnofwar", trimmed);
+								"uk.co.fuuzetsu.turnofwar", trimmed);
 						uBmap = graphics.get("Misc").get(trimmed);
 						itsaflag = 1; // dont flip
 						Bitmap personal = BitmapChanger.changeColour(itsaflag,
@@ -320,7 +320,7 @@ public final class GameView extends SurfaceView implements
 																	// otherwise
 					if (uGfx.getKey().equals(original)) {
 						putResource("Misc", trimmed, "drawable",
-								"ed.turnofwar", trimmed);
+								"uk.co.fuuzetsu.turnofwar", trimmed);
 						uBmap = graphics.get("Misc").get(trimmed);
 						itsaflag = 1; // dont flip
 						Bitmap personal = BitmapChanger.changeColour(itsaflag,
@@ -371,7 +371,7 @@ public final class GameView extends SurfaceView implements
 
 	/* Helper for loadBorders() */
 	private void loadField(final String resName, final String regName) {
-		putResource("Fields", resName, "drawable", "ed.turnofwar", regName);
+		putResource("Fields", resName, "drawable", "uk.co.fuuzetsu.turnofwar", regName);
 	}
 
 	private void loadBorders() {

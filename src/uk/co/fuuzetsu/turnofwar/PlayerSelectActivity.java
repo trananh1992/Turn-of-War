@@ -24,7 +24,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 
-import ed.turnofwar.engine.Player;
+import uk.co.fuuzetsu.turnofwar.engine.Player;
 
 public class PlayerSelectActivity extends Activity implements OnClickListener {
 	private int numPlayers;

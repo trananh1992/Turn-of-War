@@ -18,8 +18,8 @@ package uk.co.fuuzetsu.turnofwar.engine;
 
 import java.util.List;
 
-import ed.turnofwar.engine.GoalArbitration.AtomicAction;
-import ed.turnofwar.engine.GoalArbitration.StateTree;
+import uk.co.fuuzetsu.turnofwar.engine.GoalArbitration.AtomicAction;
+import uk.co.fuuzetsu.turnofwar.engine.GoalArbitration.StateTree;
 
 public class PlayerAI extends Player {
 	private GameState gameState;

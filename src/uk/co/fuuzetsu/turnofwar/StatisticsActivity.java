@@ -26,7 +26,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-import ed.turnofwar.engine.Database.Database;
+import uk.co.fuuzetsu.turnofwar.engine.Database.Database;
 
 public class StatisticsActivity extends Activity implements OnClickListener {
 

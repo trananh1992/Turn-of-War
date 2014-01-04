@@ -32,8 +32,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import ed.turnofwar.engine.BasicMapInfo;
-import ed.turnofwar.engine.MapReader;
+import uk.co.fuuzetsu.turnofwar.engine.BasicMapInfo;
+import uk.co.fuuzetsu.turnofwar.engine.MapReader;
 
 public class MapSelectActivity extends Activity implements OnItemClickListener {
 	private List<BasicMapInfo> mapInfo = new ArrayList<BasicMapInfo>();

@@ -16,8 +16,8 @@
 
 package uk.co.fuuzetsu.turnofwar.engine.GoalArbitration;
 
-import ed.turnofwar.engine.GameState;
-import ed.turnofwar.engine.Unit;
+import uk.co.fuuzetsu.turnofwar.engine.GameState;
+import uk.co.fuuzetsu.turnofwar.engine.Unit;
 
 //abstract class from which "AttackUnit, DefendTile, MoveTo, CaptureTile" etc are derived from
 public abstract class AtomicAction {

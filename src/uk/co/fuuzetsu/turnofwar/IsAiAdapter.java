@@ -28,7 +28,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import ed.turnofwar.engine.Player;
+import uk.co.fuuzetsu.turnofwar.engine.Player;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class IsAiAdapter extends ArrayAdapter<Player> implements

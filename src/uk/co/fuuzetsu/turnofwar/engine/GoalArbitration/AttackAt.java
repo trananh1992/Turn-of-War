@@ -16,9 +16,9 @@
 
 package uk.co.fuuzetsu.turnofwar.engine.GoalArbitration;
 
-import ed.turnofwar.engine.GameState;
-import ed.turnofwar.engine.Position;
-import ed.turnofwar.engine.Unit;
+import uk.co.fuuzetsu.turnofwar.engine.GameState;
+import uk.co.fuuzetsu.turnofwar.engine.Position;
+import uk.co.fuuzetsu.turnofwar.engine.Unit;
 
 public class AttackAt extends AtomicAction {
 	private Unit targetUnit;

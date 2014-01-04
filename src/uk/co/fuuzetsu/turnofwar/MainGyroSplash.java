@@ -43,7 +43,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import ed.turnofwar.R.anim;
+import uk.co.fuuzetsu.turnofwar.R.anim;
 import com.insideoutlier.glass.lib.Glass;
 
 public class MainGyroSplash extends Activity {

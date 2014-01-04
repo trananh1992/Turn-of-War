@@ -49,12 +49,12 @@ import android.widget.Button;
 
 //import android.view.KeyEvent;
 
-import ed.turnofwar.engine.GameMap;
-import ed.turnofwar.engine.GameState;
-import ed.turnofwar.engine.Logic;
-import ed.turnofwar.engine.MapReader;
-import ed.turnofwar.engine.Statistics;
-import ed.turnofwar.engine.Database.Database;
+import uk.co.fuuzetsu.turnofwar.engine.GameMap;
+import uk.co.fuuzetsu.turnofwar.engine.GameState;
+import uk.co.fuuzetsu.turnofwar.engine.Logic;
+import uk.co.fuuzetsu.turnofwar.engine.MapReader;
+import uk.co.fuuzetsu.turnofwar.engine.Statistics;
+import uk.co.fuuzetsu.turnofwar.engine.Database.Database;
 
 public class GameActivity extends Activity {
 	private static final String TAG = "GameActivity";

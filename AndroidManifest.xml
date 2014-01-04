@@ -59,10 +59,4 @@
             android:label="@string/title_activity_player_select" >
         </activity>
     </application>
-
-    <instrumentation
-        android:name="android.test.InstrumentationTestRunner"
-        android:label="Tests for com.group7.dragonwars"
-        android:targetPackage="com.group7.dragonwars" />
-
 </manifest>

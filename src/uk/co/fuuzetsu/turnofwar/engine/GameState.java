@@ -309,7 +309,6 @@ public final class GameState {
 				String OwnerArr = Arr[1];
 				int OwnerInt = Integer.parseInt(OwnerArr, 10);
 				// String A = "yolo";
-				// Log.v(A, "lol" + unit.getOwner() + " £ " + currInt + " " +
 				// OwnerInt + " " + gf.hostsUnit());
 
 				if (OwnerInt == currInt) {

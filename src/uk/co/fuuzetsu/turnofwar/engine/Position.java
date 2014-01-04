@@ -18,43 +18,43 @@ package uk.co.fuuzetsu.turnofwar.engine;
 
 public final class Position {
 
-	private Pair<Integer, Integer> pair;
+    private Pair<Integer, Integer> pair;
 
-	public Position(final Integer x, final Integer y) {
-		this.pair = new Pair<Integer, Integer>(x, y);
-	}
+    public Position(final Integer x, final Integer y) {
+        this.pair = new Pair<Integer, Integer>(x, y);
+    }
 
-	public Integer getX() {
-		return this.pair.getLeft();
-	}
+    public Integer getX() {
+        return this.pair.getLeft();
+    }
 
-	public Integer getY() {
-		return this.pair.getRight();
-	}
+    public Integer getY() {
+        return this.pair.getRight();
+    }
 
-	@Override
-	public boolean equals(Object other) {
-		if (this == other) {
-			return true;
-		}
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
 
-		if (!(other instanceof Position)) {
-			return false;
-		}
+        if (!(other instanceof Position)) {
+            return false;
+        }
 
-		Position that = (Position) other;
+        Position that = (Position) other;
 
-		return getX() == that.getX() && getY() == that.getY();
-	}
+        return getX() == that.getX() && getY() == that.getY();
+    }
 
-	@Override
-	public int hashCode() {
-		return pair.hashCode();
-	}
+    @Override
+    public int hashCode() {
+        return pair.hashCode();
+    }
 
-	public String toString() {
-		return String.format("(%d, %d)", this.pair.getLeft(),
-				this.pair.getRight());
-	}
+    public String toString() {
+        return String.format("(%d, %d)", this.pair.getLeft(),
+                             this.pair.getRight());
+    }
 
 }

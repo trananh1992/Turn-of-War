@@ -37,155 +37,155 @@ package uk.co.fuuzetsu.turnofwar.engine;
 
 public class UnitDamages {
 
-	// else if (attacker.getName().equals("") &&
-	// (defender.getName().equals("Infantry"))) {
-	// damage = 0;
-	// }
-	// else if (attacker.getName().equals("") &&
-	// (defender.getName().equals("Mech"))) {
-	// damage = 0;
-	// }
-	// else if (attacker.getName().equals("") &&
-	// (defender.getName().equals("Recon"))) {
-	// damage = 0;
-	// }
-	// else if (attacker.getName().equals("") &&
-	// (defender.getName().equals("Tank"))) {
-	// damage = 0;
-	// }
-	// else if (attacker.getName().equals("") &&
-	// (defender.getName().equals("MdTank"))) {
-	// damage = 0;
-	// }
-	// else if (attacker.getName().equals("") &&
-	// (defender.getName().equals("Neotank"))) {
-	// damage = 0;
-	// }
-	// else if (attacker.getName().equals("") &&
-	// (defender.getName().equals("Megatank"))) {
-	// damage = 0;
-	// }
-	// else if (attacker.getName().equals("") &&
-	// (defender.getName().equals("AntiAir"))) {
-	// damage = 0;
-	// }
-	// else if (attacker.getName().equals("") &&
-	// (defender.getName().equals("Piperunner"))) {
-	// damage = 0;
-	// }
-	// else if (attacker.getName().equals("") &&
-	// (defender.getName().equals("Missiles"))) {
-	// damage = 0;
-	// }
-	// else if (attacker.getName().equals("") &&
-	// (defender.getName().equals("Carrier"))) {
-	// damage = 0;
-	// }
-	// else if (attacker.getName().equals("") &&
-	// (defender.getName().equals("Fighter"))) {
-	// damage = 0;
-	// }
-	// else if (attacker.getName().equals("") &&
-	// (defender.getName().equals("BattleCopter"))) {
-	// damage = 0;
-	// }
-	// else if (attacker.getName().equals("") &&
-	// (defender.getName().equals("Stealth"))) {
-	// damage = 0;
-	// }
-	// else if (attacker.getName().equals("") &&
-	// (defender.getName().equals("Cruiser"))) {
-	// damage = 0;
-	// }
-	// else if (attacker.getName().equals("") &&
-	// (defender.getName().equals("Bomber"))) {
-	// damage = 0;
-	// }
-	// else if (attacker.getName().equals("") &&
-	// (defender.getName().equals("Battleship"))) {
-	// damage = 0;
-	// }
-	// else if (attacker.getName().equals("") &&
-	// (defender.getName().equals("Rockets"))) {
-	// damage = 0;
-	// }
-	// else if (attacker.getName().equals("") &&
-	// (defender.getName().equals("Artillery"))) {
-	// damage = 0;
-	// }
-	// else if (attacker.getName().equals("") &&
-	// (defender.getName().equals("Submarine"))) {
-	// damage = 0;
-	// }
-	// else if (attacker.getName().equals("") &&
-	// (defender.getName().equals("BlackBomb"))) {
-	// damage = 0;
-	// }
-	// else if (attacker.getName().equals("") &&
-	// (defender.getName().equals("APC"))) {
-	// damage = 0;
-	// }
-	// else if (attacker.getName().equals("") &&
-	// (defender.getName().equals("TransportCopter"))) {
-	// damage = 0;
-	// }
-	// else if (attacker.getName().equals("") &&
-	// (defender.getName().equals("Lander"))) {
-	// damage = 0;
-	// }
-	// else if (attacker.getName().equals("") &&
-	// (defender.getName().equals("BlackBoat"))) {
-	// damage = 0;
-	// }
-	public int CalculateDamage(Unit attacker, Unit defender) {
-		int damage = 0;
-		if (attacker.getName().equals("Tank")
-				&& (defender.getName().equals("Tank"))) {
-			damage = 50;
-		} else if (attacker.getName().equals("")
-				&& (defender.getName().equals("HeavyTank"))) {
-			damage = 0;
-		} else if (attacker.getName().equals("")
-				&& (defender.getName().equals("RocketTruck"))) {
-			damage = 0;
-		} else if (attacker.getName().equals("")
-				&& (defender.getName().equals("AntiAir"))) {
-			damage = 0;
-		} else if (attacker.getName().equals("")
-				&& (defender.getName().equals("CommandVehicle"))) {
-			damage = 0;
-		} else if (attacker.getName().equals("")
-				&& (defender.getName().equals("Fighter"))) {
-			damage = 0;
-		} else if (attacker.getName().equals("")
-				&& (defender.getName().equals("Bomber"))) {
-			damage = 0;
-		} else if (attacker.getName().equals("")
-				&& (defender.getName().equals("Stealth"))) {
-			damage = 0;
-		} else if (attacker.getName().equals("")
-				&& (defender.getName().equals("Destroyer"))) {
-			damage = 0;
-		} else if (attacker.getName().equals("")
-				&& (defender.getName().equals(""))) {
-			damage = 0;
-		} else if (attacker.getName().equals("")
-				&& (defender.getName().equals(""))) {
-			damage = 0;
-		} else if (attacker.getName().equals("")
-				&& (defender.getName().equals(""))) {
-			damage = 0;
-		} else if (attacker.getName().equals("")
-				&& (defender.getName().equals(""))) {
-			damage = 0;
-		} else if (attacker.getName().equals("")
-				&& (defender.getName().equals(""))) {
-			damage = 0;
-		} else if (attacker.getName().equals("")
-				&& (defender.getName().equals(""))) {
-			damage = 0;
-		}
+    // else if (attacker.getName().equals("") &&
+    // (defender.getName().equals("Infantry"))) {
+    // damage = 0;
+    // }
+    // else if (attacker.getName().equals("") &&
+    // (defender.getName().equals("Mech"))) {
+    // damage = 0;
+    // }
+    // else if (attacker.getName().equals("") &&
+    // (defender.getName().equals("Recon"))) {
+    // damage = 0;
+    // }
+    // else if (attacker.getName().equals("") &&
+    // (defender.getName().equals("Tank"))) {
+    // damage = 0;
+    // }
+    // else if (attacker.getName().equals("") &&
+    // (defender.getName().equals("MdTank"))) {
+    // damage = 0;
+    // }
+    // else if (attacker.getName().equals("") &&
+    // (defender.getName().equals("Neotank"))) {
+    // damage = 0;
+    // }
+    // else if (attacker.getName().equals("") &&
+    // (defender.getName().equals("Megatank"))) {
+    // damage = 0;
+    // }
+    // else if (attacker.getName().equals("") &&
+    // (defender.getName().equals("AntiAir"))) {
+    // damage = 0;
+    // }
+    // else if (attacker.getName().equals("") &&
+    // (defender.getName().equals("Piperunner"))) {
+    // damage = 0;
+    // }
+    // else if (attacker.getName().equals("") &&
+    // (defender.getName().equals("Missiles"))) {
+    // damage = 0;
+    // }
+    // else if (attacker.getName().equals("") &&
+    // (defender.getName().equals("Carrier"))) {
+    // damage = 0;
+    // }
+    // else if (attacker.getName().equals("") &&
+    // (defender.getName().equals("Fighter"))) {
+    // damage = 0;
+    // }
+    // else if (attacker.getName().equals("") &&
+    // (defender.getName().equals("BattleCopter"))) {
+    // damage = 0;
+    // }
+    // else if (attacker.getName().equals("") &&
+    // (defender.getName().equals("Stealth"))) {
+    // damage = 0;
+    // }
+    // else if (attacker.getName().equals("") &&
+    // (defender.getName().equals("Cruiser"))) {
+    // damage = 0;
+    // }
+    // else if (attacker.getName().equals("") &&
+    // (defender.getName().equals("Bomber"))) {
+    // damage = 0;
+    // }
+    // else if (attacker.getName().equals("") &&
+    // (defender.getName().equals("Battleship"))) {
+    // damage = 0;
+    // }
+    // else if (attacker.getName().equals("") &&
+    // (defender.getName().equals("Rockets"))) {
+    // damage = 0;
+    // }
+    // else if (attacker.getName().equals("") &&
+    // (defender.getName().equals("Artillery"))) {
+    // damage = 0;
+    // }
+    // else if (attacker.getName().equals("") &&
+    // (defender.getName().equals("Submarine"))) {
+    // damage = 0;
+    // }
+    // else if (attacker.getName().equals("") &&
+    // (defender.getName().equals("BlackBomb"))) {
+    // damage = 0;
+    // }
+    // else if (attacker.getName().equals("") &&
+    // (defender.getName().equals("APC"))) {
+    // damage = 0;
+    // }
+    // else if (attacker.getName().equals("") &&
+    // (defender.getName().equals("TransportCopter"))) {
+    // damage = 0;
+    // }
+    // else if (attacker.getName().equals("") &&
+    // (defender.getName().equals("Lander"))) {
+    // damage = 0;
+    // }
+    // else if (attacker.getName().equals("") &&
+    // (defender.getName().equals("BlackBoat"))) {
+    // damage = 0;
+    // }
+    public int CalculateDamage(Unit attacker, Unit defender) {
+        int damage = 0;
+        if (attacker.getName().equals("Tank")
+                && (defender.getName().equals("Tank"))) {
+            damage = 50;
+        } else if (attacker.getName().equals("")
+                   && (defender.getName().equals("HeavyTank"))) {
+            damage = 0;
+        } else if (attacker.getName().equals("")
+                   && (defender.getName().equals("RocketTruck"))) {
+            damage = 0;
+        } else if (attacker.getName().equals("")
+                   && (defender.getName().equals("AntiAir"))) {
+            damage = 0;
+        } else if (attacker.getName().equals("")
+                   && (defender.getName().equals("CommandVehicle"))) {
+            damage = 0;
+        } else if (attacker.getName().equals("")
+                   && (defender.getName().equals("Fighter"))) {
+            damage = 0;
+        } else if (attacker.getName().equals("")
+                   && (defender.getName().equals("Bomber"))) {
+            damage = 0;
+        } else if (attacker.getName().equals("")
+                   && (defender.getName().equals("Stealth"))) {
+            damage = 0;
+        } else if (attacker.getName().equals("")
+                   && (defender.getName().equals("Destroyer"))) {
+            damage = 0;
+        } else if (attacker.getName().equals("")
+                   && (defender.getName().equals(""))) {
+            damage = 0;
+        } else if (attacker.getName().equals("")
+                   && (defender.getName().equals(""))) {
+            damage = 0;
+        } else if (attacker.getName().equals("")
+                   && (defender.getName().equals(""))) {
+            damage = 0;
+        } else if (attacker.getName().equals("")
+                   && (defender.getName().equals(""))) {
+            damage = 0;
+        } else if (attacker.getName().equals("")
+                   && (defender.getName().equals(""))) {
+            damage = 0;
+        } else if (attacker.getName().equals("")
+                   && (defender.getName().equals(""))) {
+            damage = 0;
+        }
 
-		return damage;
-	}
+        return damage;
+    }
 }

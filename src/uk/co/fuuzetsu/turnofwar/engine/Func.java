@@ -17,5 +17,5 @@
 package uk.co.fuuzetsu.turnofwar.engine;
 
 public interface Func<I, O> {
-	O apply(I i);
+    O apply(I i);
 }

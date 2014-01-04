@@ -66,7 +66,7 @@
 			"accessible": false,
 			"flightOnly": true,
 			"boatOnly": true
-		},	
+		},
 		"M": {
 			"name": "Mountain",
 			"file": "mountain",
@@ -207,7 +207,7 @@
 			"attack": 1.0,
 			"meleeDefense": 1.0,
 			"rangeDefense": 1.0,
-			"productionCost": 8 
+			"productionCost": 8
 		},
 		"f": {
 			"name": "Fighter",
@@ -239,7 +239,7 @@
 			"attack": 1.0,
 			"meleeDefense": 1.0,
 			"rangeDefense": 1.0,
-			"productionCost": 4 
+			"productionCost": 4
 		},
 		"h": {
 			"name": "Stealth",
@@ -335,7 +335,7 @@
 			"attack": 1.0,
 			"meleeDefense": 1.0,
 			"rangeDefense": 1.0,
-			"productionCost": 10 
+			"productionCost": 10
 			}
 		},
 	"buildings": {
@@ -446,7 +446,7 @@
 			"owner": 0,
 			"produces": []
 		},
-		
+
 		{"building": "C",
 			"posX": 5,
 			"posY": 5,
@@ -549,7 +549,7 @@
 			"owner": 2
 		},
 
-		
+
 		{"unit": "a",
 			"posX": 2,
 			"posY": 8,
@@ -615,8 +615,8 @@
 			"posY": 8,
 			"owner": 2
 		},
-		
-		
+
+
 		{"unit": "i",
 			"posX": 9,
 			"posY": 3,

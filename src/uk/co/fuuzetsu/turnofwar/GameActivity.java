@@ -57,80 +57,80 @@ import uk.co.fuuzetsu.turnofwar.engine.Statistics;
 import uk.co.fuuzetsu.turnofwar.engine.Database.Database;
 
 public class GameActivity extends Activity {
-	private static final String TAG = "GameActivity";
+    private static final String TAG = "GameActivity";
 
-	private GameState state = null;
+    private GameState state = null;
 
-	@Override
-	protected final void onCreate(final Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+    @Override
+    protected final void onCreate(final Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-		// remove the title bar
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
+        // remove the title bar
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-		// remove the status bar
-		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-				WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        // remove the status bar
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                             WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-		Log.d(TAG, "in onCreate");
-		// setContentView(R.layout.loading_screen);
-		Log.d(TAG, "on inCreate");
-	}
+        Log.d(TAG, "in onCreate");
+        // setContentView(R.layout.loading_screen);
+        Log.d(TAG, "on inCreate");
+    }
 
-	@Override
-	protected final void onStart() {
-		super.onStart();
-		Bundle b = getIntent().getExtras();
-		String mapFileName = b.getString("mapFileName");
-		boolean[] isAi = b.getBooleanArray("isAi");
-		GameMap map = null;
+    @Override
+    protected final void onStart() {
+        super.onStart();
+        Bundle b = getIntent().getExtras();
+        String mapFileName = b.getString("mapFileName");
+        boolean[] isAi = b.getBooleanArray("isAi");
+        GameMap map = null;
 
-		try {
-			map = MapReader.readMapFromFile(mapFileName, this, isAi);
-		} catch (JSONException e) {
-			Log.d(TAG, "Failed to load the map: " + e.getMessage());
-		}
+        try {
+            map = MapReader.readMapFromFile(mapFileName, this, isAi);
+        } catch (JSONException e) {
+            Log.d(TAG, "Failed to load the map: " + e.getMessage());
+        }
 
-		if (map == null) {
-			Log.d(TAG, "map is null");
-			System.exit(1);
-		}
-		// getWindow().setFormat(PixelFormat.RGBA_8888); //fix banding which
-		// ruined all my nice images
-		setContentView(R.layout.activity_game);
-		GameView gameView = (GameView) this.findViewById(R.id.gameView);
-		state = new GameState(map, new Logic(), map.getPlayers(), gameView);
-		Button menuButton = (Button) this.findViewById(R.id.menuButton);
-		menuButton.setOnClickListener(gameView);
-		gameView.setState(state, this);
-	}
+        if (map == null) {
+            Log.d(TAG, "map is null");
+            System.exit(1);
+        }
+        // getWindow().setFormat(PixelFormat.RGBA_8888); //fix banding which
+        // ruined all my nice images
+        setContentView(R.layout.activity_game);
+        GameView gameView = (GameView) this.findViewById(R.id.gameView);
+        state = new GameState(map, new Logic(), map.getPlayers(), gameView);
+        Button menuButton = (Button) this.findViewById(R.id.menuButton);
+        menuButton.setOnClickListener(gameView);
+        gameView.setState(state, this);
+    }
 
-	public final void endGame() {
-		setContentView(R.layout.loading_screen);
-		Intent intent = new Intent(this, Results.class);
-		Bundle b = new Bundle();
-		b.putString("winnerName", state.getWinner().getName());
-		b.putInt("turns", state.getTurns());
-		Statistics stats = state.getStatistics();
-		Double damageDealt = stats.getStatistic("Damage dealt");
-		Double damageReceived = stats.getStatistic("Damage received");
-		Double distanceTravelled = stats.getStatistic("Distance travelled");
-		Integer goldCollected = stats.getStatistic("Gold received").intValue();
-		Integer unitsKilled = stats.getStatistic("Units killed").intValue();
-		Integer unitsMade = stats.getStatistic("Units produced").intValue();
+    public final void endGame() {
+        setContentView(R.layout.loading_screen);
+        Intent intent = new Intent(this, Results.class);
+        Bundle b = new Bundle();
+        b.putString("winnerName", state.getWinner().getName());
+        b.putInt("turns", state.getTurns());
+        Statistics stats = state.getStatistics();
+        Double damageDealt = stats.getStatistic("Damage dealt");
+        Double damageReceived = stats.getStatistic("Damage received");
+        Double distanceTravelled = stats.getStatistic("Distance travelled");
+        Integer goldCollected = stats.getStatistic("Gold received").intValue();
+        Integer unitsKilled = stats.getStatistic("Units killed").intValue();
+        Integer unitsMade = stats.getStatistic("Units produced").intValue();
 
-		Database db = new Database(getApplicationContext());
-		db.AddEntry(damageDealt, damageReceived, distanceTravelled,
-				goldCollected, unitsKilled, unitsMade);
-		db.Close();
+        Database db = new Database(getApplicationContext());
+        db.AddEntry(damageDealt, damageReceived, distanceTravelled,
+                    goldCollected, unitsKilled, unitsMade);
+        db.Close();
 
-		for (Map.Entry<String, Double> ent : stats.getEntrySet()) {
-			b.putDouble(ent.getKey(), ent.getValue().doubleValue());
-		}
+        for (Map.Entry<String, Double> ent : stats.getEntrySet()) {
+            b.putDouble(ent.getKey(), ent.getValue().doubleValue());
+        }
 
-		intent.putExtras(b);
-		startActivity(intent);
-		finish();
-	}
+        intent.putExtras(b);
+        startActivity(intent);
+        finish();
+    }
 
 }

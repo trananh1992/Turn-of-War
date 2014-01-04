@@ -21,16 +21,16 @@ import uk.co.fuuzetsu.turnofwar.engine.Position;
 import uk.co.fuuzetsu.turnofwar.engine.Unit;
 
 public class MoveTo extends AtomicAction {
-	Position destination;
+    Position destination;
 
-	public MoveTo(final GameState gameState, final Unit unit,
-			final Position destin, final float value) {
-		super(gameState, unit, value);
-		destination = destin;
-	}
+    public MoveTo(final GameState gameState, final Unit unit,
+                  final Position destin, final float value) {
+        super(gameState, unit, value);
+        destination = destin;
+    }
 
-	@Override
-	public void Perform() {
-		super.gameState.move(getUnit(), destination);
-	}
+    @Override
+    public void Perform() {
+        super.gameState.move(getUnit(), destination);
+    }
 }

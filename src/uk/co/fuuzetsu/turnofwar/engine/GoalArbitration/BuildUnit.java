@@ -23,18 +23,18 @@ import uk.co.fuuzetsu.turnofwar.engine.Position;
 import uk.co.fuuzetsu.turnofwar.engine.Unit;
 
 public class BuildUnit extends AtomicAction {
-	Position destination;
+    Position destination;
 
-	public BuildUnit(final GameState gameState, final Unit unit,
-			final Position destin, final float value) {
-		super(gameState, unit, value);
-		destination = destin;
-	}
+    public BuildUnit(final GameState gameState, final Unit unit,
+                     final Position destin, final float value) {
+        super(gameState, unit, value);
+        destination = destin;
+    }
 
-	@Override
-	public void Perform() {
-		Log.d("BU", "Unit being built");
-		super.gameState.produceUnit(gameState.getMap().getField(destination),
-				actionUnit);
-	}
+    @Override
+    public void Perform() {
+        Log.d("BU", "Unit being built");
+        super.gameState.produceUnit(gameState.getMap().getField(destination),
+                                    actionUnit);
+    }
 }

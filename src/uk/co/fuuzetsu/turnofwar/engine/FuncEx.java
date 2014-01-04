@@ -17,5 +17,5 @@
 package uk.co.fuuzetsu.turnofwar.engine;
 
 public interface FuncEx<I, O, E extends Exception> {
-	O apply(I i) throws E;
+    O apply(I i) throws E;
 }

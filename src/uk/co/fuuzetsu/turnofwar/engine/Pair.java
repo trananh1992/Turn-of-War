@@ -18,54 +18,54 @@ package uk.co.fuuzetsu.turnofwar.engine;
 
 public class Pair<L, R> {
 
-	private L left;
-	private R right;
+    private L left;
+    private R right;
 
-	public Pair(final L left, final R right) {
-		this.left = left;
-		this.right = right;
-	}
+    public Pair(final L left, final R right) {
+        this.left = left;
+        this.right = right;
+    }
 
-	public L getLeft() {
-		return this.left;
-	}
+    public L getLeft() {
+        return this.left;
+    }
 
-	public R getRight() {
-		return this.right;
-	}
+    public R getRight() {
+        return this.right;
+    }
 
-	public void setLeft(final L l) {
-		this.left = l;
-	}
+    public void setLeft(final L l) {
+        this.left = l;
+    }
 
-	public void setRight(final R r) {
-		this.right = r;
-	}
+    public void setRight(final R r) {
+        this.right = r;
+    }
 
-	public String toString() {
-		return String.format("(%s, %s)", left, right);
-	}
+    public String toString() {
+        return String.format("(%s, %s)", left, right);
+    }
 
-	@Override
-	public int hashCode() {
-		int hashFirst = left != null ? left.hashCode() : 0;
-		int hashSecond = right != null ? right.hashCode() : 0;
+    @Override
+    public int hashCode() {
+        int hashFirst = left != null ? left.hashCode() : 0;
+        int hashSecond = right != null ? right.hashCode() : 0;
 
-		return (hashFirst + hashSecond) * hashSecond + hashFirst;
-	}
+        return (hashFirst + hashSecond) * hashSecond + hashFirst;
+    }
 
-	@Override
-	public boolean equals(Object other) {
-		if (this == other) {
-			return true;
-		}
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
 
-		if (!(other instanceof Pair)) {
-			return false;
-		}
+        if (!(other instanceof Pair)) {
+            return false;
+        }
 
-		Pair that = (Pair) other;
+        Pair that = (Pair) other;
 
-		return left.equals(that.getLeft()) && right.equals(that.getRight());
-	}
+        return left.equals(that.getLeft()) && right.equals(that.getRight());
+    }
 }

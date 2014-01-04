@@ -40,171 +40,171 @@ import java.util.List;
 
 public final class Building extends DrawableMapObject {
 
-	private Integer captureWorth;
-	private Integer captureDifficulty;
-	Integer remainingCaptureTime;
-	private Double attackBonus, defenseBonus;
-	private Player owner = null;
-	public Boolean goalBuilding;
-	private Player lastCapturer;
-	private List<Unit> producibleUnits = new ArrayList<Unit>();
-	private Position position;
+    private Integer captureWorth;
+    private Integer captureDifficulty;
+    Integer remainingCaptureTime;
+    private Double attackBonus, defenseBonus;
+    private Player owner = null;
+    public Boolean goalBuilding;
+    private Player lastCapturer;
+    private List<Unit> producibleUnits = new ArrayList<Unit>();
+    private Position position;
 
-	public Building(final String name, final Integer captureDifficulty,
-			final Double attackBonus, final Double defenseBonus,
-			final Boolean goalBuilding, final Integer captureWorth,
-			final String spriteLocation, final String spriteDir,
-			final String spritePack) {
-		super(name, spriteLocation, spriteDir, spritePack);
+    public Building(final String name, final Integer captureDifficulty,
+                    final Double attackBonus, final Double defenseBonus,
+                    final Boolean goalBuilding, final Integer captureWorth,
+                    final String spriteLocation, final String spriteDir,
+                    final String spritePack) {
+        super(name, spriteLocation, spriteDir, spritePack);
 
-		this.captureDifficulty = captureDifficulty;
-		this.remainingCaptureTime = this.captureDifficulty;
+        this.captureDifficulty = captureDifficulty;
+        this.remainingCaptureTime = this.captureDifficulty;
 
-		this.attackBonus = attackBonus;
-		this.defenseBonus = defenseBonus;
+        this.attackBonus = attackBonus;
+        this.defenseBonus = defenseBonus;
 
-		this.goalBuilding = goalBuilding;
-		this.captureWorth = captureWorth;
+        this.goalBuilding = goalBuilding;
+        this.captureWorth = captureWorth;
 
-		generateInfo();
+        generateInfo();
 
-	}
+    }
 
-	public Building(final Building building) {
-		super(building.getName(), building.getSpriteLocation(), building
-				.getSpriteDir(), building.getSpritePack());
+    public Building(final Building building) {
+        super(building.getName(), building.getSpriteLocation(), building
+              .getSpriteDir(), building.getSpritePack());
 
-		this.captureDifficulty = building.getCaptureDifficulty();
-		this.remainingCaptureTime = this.captureDifficulty;
+        this.captureDifficulty = building.getCaptureDifficulty();
+        this.remainingCaptureTime = this.captureDifficulty;
 
-		this.attackBonus = building.getAttackBonus();
-		this.defenseBonus = building.getDefenseBonus();
+        this.attackBonus = building.getAttackBonus();
+        this.defenseBonus = building.getDefenseBonus();
 
-		this.goalBuilding = building.isGoalBuilding();
-		this.captureWorth = building.getCaptureWorth();
+        this.goalBuilding = building.isGoalBuilding();
+        this.captureWorth = building.getCaptureWorth();
 
-		this.info = building.info;
+        this.info = building.info;
 
-	}
+    }
 
-	public Boolean canProduceUnits() {
-		return !this.producibleUnits.isEmpty();
-	}
+    public Boolean canProduceUnits() {
+        return !this.producibleUnits.isEmpty();
+    }
 
-	public void addProducibleUnit(final Unit unit) {
-		this.producibleUnits.add(unit);
-		this.generateInfo();
-	}
+    public void addProducibleUnit(final Unit unit) {
+        this.producibleUnits.add(unit);
+        this.generateInfo();
+    }
 
-	public List<Unit> getProducibleUnits() {
-		return this.producibleUnits;
-	}
+    public List<Unit> getProducibleUnits() {
+        return this.producibleUnits;
+    }
 
-	public String toString() {
-		return getName();
-	}
+    public String toString() {
+        return getName();
+    }
 
-	public Player getLastCapturer() {
-		return this.lastCapturer;
-	}
+    public Player getLastCapturer() {
+        return this.lastCapturer;
+    }
 
-	public void setLastCapturer(final Player player) {
-		this.lastCapturer = player;
-	}
+    public void setLastCapturer(final Player player) {
+        this.lastCapturer = player;
+    }
 
-	public Integer getCaptureDifficulty() {
-		return this.captureDifficulty;
-	}
+    public Integer getCaptureDifficulty() {
+        return this.captureDifficulty;
+    }
 
-	public Integer getRemainingCaptureTime() {
-		return this.remainingCaptureTime;
-	}
+    public Integer getRemainingCaptureTime() {
+        return this.remainingCaptureTime;
+    }
 
-	public Double getAttackBonus() {
-		return this.attackBonus;
-	}
+    public Double getAttackBonus() {
+        return this.attackBonus;
+    }
 
-	public Double getDefenseBonus() {
-		return this.defenseBonus;
-	}
+    public Double getDefenseBonus() {
+        return this.defenseBonus;
+    }
 
-	public Boolean hasOwner() {
-		return this.owner != null;
-	}
+    public Boolean hasOwner() {
+        return this.owner != null;
+    }
 
-	public Player getOwner() {
-		return this.owner;
-	}
+    public Player getOwner() {
+        return this.owner;
+    }
 
-	public void setOwner(final Player player) {
-		this.owner = player;
-	}
+    public void setOwner(final Player player) {
+        this.owner = player;
+    }
 
-	public Boolean isGoalBuilding() {
-		return this.goalBuilding;
-	}
+    public Boolean isGoalBuilding() {
+        return this.goalBuilding;
+    }
 
-	public Boolean capturedGoalBuilding() {
-		return this.goalBuilding = false;
-	}
+    public Boolean capturedGoalBuilding() {
+        return this.goalBuilding = false;
+    }
 
-	public Player reduceCaptureTime(final Integer captureAmount) {
-		this.remainingCaptureTime -= captureAmount;
+    public Player reduceCaptureTime(final Integer captureAmount) {
+        this.remainingCaptureTime -= captureAmount;
 
-		if (this.remainingCaptureTime <= 0) {
-			this.remainingCaptureTime = 0;
-			this.owner.removeBuilding(this);
-			this.capturedGoalBuilding(); // line to disable HQ property of any
-											// captured properties (1 HQ mode)
-			this.owner = this.lastCapturer;
-			this.lastCapturer.addBuilding(this);
-			this.remainingCaptureTime = this.captureDifficulty;
-		}
-		return lastCapturer;
-	}
+        if (this.remainingCaptureTime <= 0) {
+            this.remainingCaptureTime = 0;
+            this.owner.removeBuilding(this);
+            this.capturedGoalBuilding(); // line to disable HQ property of any
+            // captured properties (1 HQ mode)
+            this.owner = this.lastCapturer;
+            this.lastCapturer.addBuilding(this);
+            this.remainingCaptureTime = this.captureDifficulty;
+        }
+        return lastCapturer;
+    }
 
-	public void resetCaptureTime() {
-		this.remainingCaptureTime = this.captureDifficulty;
-	}
+    public void resetCaptureTime() {
+        this.remainingCaptureTime = this.captureDifficulty;
+    }
 
-	public Position getPosition() {
-		return this.position;
-	}
+    public Position getPosition() {
+        return this.position;
+    }
 
-	public void setPosition(final Position pos) {
-		this.position = pos;
-	}
+    public void setPosition(final Position pos) {
+        this.position = pos;
+    }
 
-	public Integer getCaptureWorth() {
-		return this.captureWorth;
-	}
+    public Integer getCaptureWorth() {
+        return this.captureWorth;
+    }
 
-	@Override
-	public String getInfo() {
-		String r = getName();
+    @Override
+    public String getInfo() {
+        String r = getName();
 
-		if (hasOwner()) {
-			r += " ~ " + getOwner().getName();
-		}
+        if (hasOwner()) {
+            r += " ~ " + getOwner().getName();
+        }
 
-		r += "\n";
+        r += "\n";
 
-		return r + this.info;
-	}
+        return r + this.info;
+    }
 
-	@Override
-	public void generateInfo() {
-		String r = "";
+    @Override
+    public void generateInfo() {
+        String r = "";
 
-		// if (canProduceUnits()) {
-		// r += "Produces:\n";
-		//
-		// for (Unit u : getProducibleUnits()) {
-		// r += " " + u + " - " + u.getProductionCost() + " Gold\n";
-		// }
-		// }
+        // if (canProduceUnits()) {
+        // r += "Produces:\n";
+        //
+        // for (Unit u : getProducibleUnits()) {
+        // r += " " + u + " - " + u.getProductionCost() + " Gold\n";
+        // }
+        // }
 
-		this.info = r;
+        this.info = r;
 
-	}
+    }
 }

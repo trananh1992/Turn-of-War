@@ -47,60 +47,60 @@ import uk.co.fuuzetsu.turnofwar.R.anim;
 import com.insideoutlier.glass.lib.Glass;
 
 public class MainGyroSplash extends Activity {
-	private Glass g;
+    private Glass g;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_gyromain);
-		FrameLayout fl = (FrameLayout) findViewById(R.id.glass);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_gyromain);
+        FrameLayout fl = (FrameLayout) findViewById(R.id.glass);
 
-		int numImages = 3; // how many background pictures total
-		int imageArr[] = new int[numImages];
-		imageArr[0] = R.id.glass_imageview1;
-		imageArr[1] = R.id.glass_imageview2;
-		imageArr[2] = R.id.glass_imageview3;
+        int numImages = 3; // how many background pictures total
+        int imageArr[] = new int[numImages];
+        imageArr[0] = R.id.glass_imageview1;
+        imageArr[1] = R.id.glass_imageview2;
+        imageArr[2] = R.id.glass_imageview3;
 
-		int n = (int) (Math.random() * numImages);
+        int n = (int)(Math.random() * numImages);
 
-		ImageView iv = (ImageView) findViewById(imageArr[n]);
+        ImageView iv = (ImageView) findViewById(imageArr[n]);
 
-		// iv.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
-		// iv.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
+        // iv.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+        // iv.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
 
-		iv.setVisibility(1);
+        iv.setVisibility(1);
 
-		g = new Glass(this, fl, iv);
-		g.scale(0.9);
-		g.setResponsiveness(15, 15); // 5 is default
-		// g.dimLights();
-		g.start();
+        g = new Glass(this, fl, iv);
+        g.scale(0.9);
+        g.setResponsiveness(15, 15); // 5 is default
+        // g.dimLights();
+        g.start();
 
-		Button button = (Button) findViewById(R.id.button);
-		button.setVisibility(View.VISIBLE);
-		button.setBackgroundColor(Color.TRANSPARENT);
-		button.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent myIntent = new Intent(MainGyroSplash.this,
-						MenuActivity.class);
-				startActivity(myIntent);
-				overridePendingTransition(anim.push_from_below_in,
-						anim.push_from_below_out);
-				// overridePendingTransition(R.anim.fade, R.anim.hold);
-			}
-		});
-	}
+        Button button = (Button) findViewById(R.id.button);
+        button.setVisibility(View.VISIBLE);
+        button.setBackgroundColor(Color.TRANSPARENT);
+        button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(MainGyroSplash.this,
+                                             MenuActivity.class);
+                startActivity(myIntent);
+                overridePendingTransition(anim.push_from_below_in,
+                                          anim.push_from_below_out);
+                // overridePendingTransition(R.anim.fade, R.anim.hold);
+            }
+        });
+    }
 
-	@Override
-	protected void onPause() {
-		super.onPause();
-		g.stop();
-	}
+    @Override
+    protected void onPause() {
+        super.onPause();
+        g.stop();
+    }
 
-	@Override
-	protected void onResume() {
-		super.onResume();
-		g.start();
-	}
+    @Override
+    protected void onResume() {
+        super.onResume();
+        g.start();
+    }
 }

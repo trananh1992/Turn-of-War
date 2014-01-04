@@ -39,86 +39,86 @@ import android.graphics.Bitmap;
 import android.graphics.Matrix;
 
 public class ColourSwap {
-	public Bitmap Swap(Integer allPxs, int[] allpixels,
-			Integer replacementColour, Bitmap replacement, Integer itsaflag) {
+    public Bitmap Swap(Integer allPxs, int[] allpixels,
+                       Integer replacementColour, Bitmap replacement, Integer itsaflag) {
 
-		// redteam do nothing
-		if (replacementColour == -13000705) { // blueteam sprites
+        // redteam do nothing
+        if (replacementColour == -13000705) { // blueteam sprites
 
-			for (Integer i = 0; i < allPxs; i++) {
-				if (allpixels[i] == -1030072) {
-					allpixels[i] = -13000705;
-				}
-			}
-		}
-		if (replacementColour == -9256376) { // leaf green team sprites
+            for (Integer i = 0; i < allPxs; i++) {
+                if (allpixels[i] == -1030072) {
+                    allpixels[i] = -13000705;
+                }
+            }
+        }
+        if (replacementColour == -9256376) { // leaf green team sprites
 
-			for (Integer i = 0; i < allPxs; i++) {
+            for (Integer i = 0; i < allPxs; i++) {
 
-				if (allpixels[i] == -1030072) {
-					allpixels[i] = -9256376;
-				}
-			}
-		}
+                if (allpixels[i] == -1030072) {
+                    allpixels[i] = -9256376;
+                }
+            }
+        }
 
-		if (replacementColour == -7623) { // yellowteam sprites
+        if (replacementColour == -7623) { // yellowteam sprites
 
-			for (Integer i = 0; i < allPxs; i++) {
-				if (allpixels[i] == -1030072) {
-					allpixels[i] = -7623;
-				}
-			}
-		}
+            for (Integer i = 0; i < allPxs; i++) {
+                if (allpixels[i] == -1030072) {
+                    allpixels[i] = -7623;
+                }
+            }
+        }
 
-		if (replacementColour == -1804345) {
-			for (Integer i = 0; i < allPxs; i++) {
-				if (allpixels[i] == -1030072) {
-					allpixels[i] = -1804345;
-				}
-			}
-		}
+        if (replacementColour == -1804345) {
+            for (Integer i = 0; i < allPxs; i++) {
+                if (allpixels[i] == -1030072) {
+                    allpixels[i] = -1804345;
+                }
+            }
+        }
 
-		if (replacementColour == -8495908) { // purple team sprites
-			for (Integer i = 0; i < allPxs; i++) {
-				if (allpixels[i] == -1030072) {
-					allpixels[i] = -8495908;
-				}
-			}
-		}
+        if (replacementColour == -8495908) { // purple team sprites
+            for (Integer i = 0; i < allPxs; i++) {
+                if (allpixels[i] == -1030072) {
+                    allpixels[i] = -8495908;
+                }
+            }
+        }
 
-		if (replacementColour == -10586212) { // stealth grey team sprites
+        if (replacementColour == -10586212) { // stealth grey team sprites
 
-			for (Integer i = 0; i < allPxs; i++) {
-				if (allpixels[i] == -1030072) {
-					allpixels[i] = -10586212;
-				}
-			}
-		}
+            for (Integer i = 0; i < allPxs; i++) {
+                if (allpixels[i] == -1030072) {
+                    allpixels[i] = -10586212;
+                }
+            }
+        }
 
-		if (replacementColour == -3932416) { // vibrant greenteam sprites
+        if (replacementColour == -3932416) { // vibrant greenteam sprites
 
-			for (Integer i = 0; i < allPxs; i++) {
-				if (allpixels[i] == -1030072) {
-					allpixels[i] = -7944448;
-				}
-			}
-		}
-		replacement.setPixels(allpixels, 0, replacement.getWidth(), 0, 0,
-				replacement.getWidth(), replacement.getHeight());
-		if ((replacementColour == -571062 || replacementColour == -9256376
-				|| replacementColour == -1804345 || replacementColour == -10586212)
-				&& itsaflag != 1) { // spawn odd teams facing right
-			replacement = flipIt(replacement);
-		}
-		return replacement;
-	}
+            for (Integer i = 0; i < allPxs; i++) {
+                if (allpixels[i] == -1030072) {
+                    allpixels[i] = -7944448;
+                }
+            }
+        }
+        replacement.setPixels(allpixels, 0, replacement.getWidth(), 0, 0,
+                              replacement.getWidth(), replacement.getHeight());
+        if ((replacementColour == -571062 || replacementColour == -9256376
+                || replacementColour == -1804345 || replacementColour == -10586212)
+                && itsaflag != 1) { // spawn odd teams facing right
+            replacement = flipIt(replacement);
+        }
+        return replacement;
+    }
 
-	private static Bitmap flipIt(Bitmap replacement) {
-		Matrix matrix = new Matrix(); // matrix to flip image
-		matrix.preScale(-1, 1);
-		// Create a Bitmap with the flip matix applied to it.
-		Bitmap reflectionImage = Bitmap.createBitmap(replacement, 0, 0,
-				replacement.getWidth(), replacement.getWidth(), matrix, false);
-		return reflectionImage;
-	}
+    private static Bitmap flipIt(Bitmap replacement) {
+        Matrix matrix = new Matrix(); // matrix to flip image
+        matrix.preScale(-1, 1);
+        // Create a Bitmap with the flip matix applied to it.
+        Bitmap reflectionImage = Bitmap.createBitmap(replacement, 0, 0,
+                                 replacement.getWidth(), replacement.getWidth(), matrix, false);
+        return reflectionImage;
+    }
 }

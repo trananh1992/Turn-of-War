@@ -30,55 +30,55 @@ import uk.co.fuuzetsu.turnofwar.engine.Database.Database;
 
 public class StatisticsActivity extends Activity implements OnClickListener {
 
-	private Button btnMenu;
-	private DecimalFormat decformat = new DecimalFormat("#.##");
+    private Button btnMenu;
+    private DecimalFormat decformat = new DecimalFormat("#.##");
 
-	@Override
-	protected final void onCreate(final Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_statistics);
-		btnMenu = (Button) findViewById(R.id.btnMenu);
-		btnMenu.setOnClickListener(this);
-	}
+    @Override
+    protected final void onCreate(final Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_statistics);
+        btnMenu = (Button) findViewById(R.id.btnMenu);
+        btnMenu.setOnClickListener(this);
+    }
 
-	@Override
-	protected final void onStart() {
-		super.onStart();
-		Database db = new Database(getApplicationContext());
+    @Override
+    protected final void onStart() {
+        super.onStart();
+        Database db = new Database(getApplicationContext());
 
-		/* TODO do the Database.Entry class properly to avoid all this */
-		String[] statsEntries = new String[6];
+        /* TODO do the Database.Entry class properly to avoid all this */
+        String[] statsEntries = new String[6];
 
-		Database.Entry entry = db.GetSummedEntries();
-		db.Close();
+        Database.Entry entry = db.GetSummedEntries();
+        db.Close();
 
-		statsEntries[0] = String.format("Damage dealt: %s",
-				decformat.format(entry.DAMAGEDEALT));
-		statsEntries[1] = String.format("Damage received: %s",
-				decformat.format(entry.DAMAGERECEIVED));
-		statsEntries[2] = String.format("Distance travelled: %s",
-				decformat.format(entry.DISTANCETRAVELLED));
-		statsEntries[3] = String.format("Gold collected: %s",
-				decformat.format(entry.GOLDCOLLECTED));
-		statsEntries[4] = String.format("Units killed: %s",
-				decformat.format(entry.UNITSKILLED));
-		statsEntries[5] = String.format("Units produced: %s",
-				decformat.format(entry.UNITSMADE));
+        statsEntries[0] = String.format("Damage dealt: %s",
+                                        decformat.format(entry.DAMAGEDEALT));
+        statsEntries[1] = String.format("Damage received: %s",
+                                        decformat.format(entry.DAMAGERECEIVED));
+        statsEntries[2] = String.format("Distance travelled: %s",
+                                        decformat.format(entry.DISTANCETRAVELLED));
+        statsEntries[3] = String.format("Gold collected: %s",
+                                        decformat.format(entry.GOLDCOLLECTED));
+        statsEntries[4] = String.format("Units killed: %s",
+                                        decformat.format(entry.UNITSKILLED));
+        statsEntries[5] = String.format("Units produced: %s",
+                                        decformat.format(entry.UNITSMADE));
 
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-				getBaseContext(), android.R.layout.simple_list_item_1,
-				statsEntries);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+            getBaseContext(), android.R.layout.simple_list_item_1,
+            statsEntries);
 
-		ListView statsList = (ListView) findViewById(R.id.statsList);
-		statsList.setAdapter(adapter);
-	}
+        ListView statsList = (ListView) findViewById(R.id.statsList);
+        statsList.setAdapter(adapter);
+    }
 
-	@Override
-	public final void onClick(final View v) {
-		if (v == this.btnMenu) {
-			Intent intent = new Intent(this, MenuActivity.class);
-			startActivity(intent);
-			finish();
-		}
-	}
+    @Override
+    public final void onClick(final View v) {
+        if (v == this.btnMenu) {
+            Intent intent = new Intent(this, MenuActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
 }

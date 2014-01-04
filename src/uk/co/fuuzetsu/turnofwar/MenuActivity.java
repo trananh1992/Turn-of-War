@@ -48,73 +48,73 @@ import android.widget.Button;
 
 public class MenuActivity extends Activity implements OnClickListener {
 
-	private Button btnBattle, btnStats, btnQuit, btnHelp;
+    private Button btnBattle, btnStats, btnQuit, btnHelp;
 
-	@Override
-	protected final void onCreate(final Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+    @Override
+    protected final void onCreate(final Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.activity_main_menu);
-		this.btnBattle = (Button) this.findViewById(R.id.btnBattle);
-		this.btnBattle.setOnClickListener(this);
+        setContentView(R.layout.activity_main_menu);
+        this.btnBattle = (Button) this.findViewById(R.id.btnBattle);
+        this.btnBattle.setOnClickListener(this);
 
-		this.btnStats = (Button) this.findViewById(R.id.btnStats);
-		this.btnStats.setOnClickListener(this);
+        this.btnStats = (Button) this.findViewById(R.id.btnStats);
+        this.btnStats.setOnClickListener(this);
 
-		this.btnHelp = (Button) this.findViewById(R.id.btnHelp);
-		this.btnHelp.setOnClickListener(this);
+        this.btnHelp = (Button) this.findViewById(R.id.btnHelp);
+        this.btnHelp.setOnClickListener(this);
 
-		this.btnQuit = (Button) this.findViewById(R.id.btnQuit);
-		this.btnQuit.setOnClickListener(this);
+        this.btnQuit = (Button) this.findViewById(R.id.btnQuit);
+        this.btnQuit.setOnClickListener(this);
 
-	}
+    }
 
-	@Override
-	protected final void onStart() {
-		super.onStart();
+    @Override
+    protected final void onStart() {
+        super.onStart();
 
-		AssetManager ass = getAssets(); // ;)
+        AssetManager ass = getAssets(); // ;)
 
-		try {
-			String[] files = ass.list("maps");
+        try {
+            String[] files = ass.list("maps");
 
-			for (int i = 0; i < files.length; ++i) {
-				Log.v(null, "File " + i + " " + files[i]);
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+            for (int i = 0; i < files.length; ++i) {
+                Log.v(null, "File " + i + " " + files[i]);
+            }
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
-	@Override
-	public final void onClick(final View v) {
-		if (v == this.btnBattle) {
-			Intent intent = new Intent(this, MapSelectActivity.class);
-			startActivity(intent);
-			finish();
-		}
+    @Override
+    public final void onClick(final View v) {
+        if (v == this.btnBattle) {
+            Intent intent = new Intent(this, MapSelectActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
-		if (v == this.btnStats) {
-			setContentView(R.layout.loading_screen);
-			Intent intent = new Intent(this, StatisticsActivity.class);
-			startActivity(intent);
-		}
+        if (v == this.btnStats) {
+            setContentView(R.layout.loading_screen);
+            Intent intent = new Intent(this, StatisticsActivity.class);
+            startActivity(intent);
+        }
 
-		if (v == this.btnHelp) {
-			Intent intent = new Intent(this, HelpActivity.class);
-			startActivity(intent);
-		}
+        if (v == this.btnHelp) {
+            Intent intent = new Intent(this, HelpActivity.class);
+            startActivity(intent);
+        }
 
-		if (v == this.btnQuit) {
-			System.exit(0);
-		}
-	}
+        if (v == this.btnQuit) {
+            System.exit(0);
+        }
+    }
 
-	@Override
-	public void onBackPressed() {
-		super.onBackPressed();
-		overridePendingTransition(R.anim.push_from_above_in,
-				R.anim.push_from_above_out);
-	}
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.push_from_above_in,
+                                  R.anim.push_from_above_out);
+    }
 }

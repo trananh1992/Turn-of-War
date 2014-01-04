@@ -46,169 +46,169 @@ import java.util.Set;
  */
 public final class InformationState {
 
-	private GameState containingState;
-	private GameField currentlySelected;
-	private GameField lastField;
-	private Set<Position> lastAttackables;
-	private Set<Position> lastAttackables2;
-	private List<Position> lastDestinations;
-	private Unit lastUnit;
-	private List<Position> path;
-	private Long startingTime;
-	private Long timeElapsed = 0L;
-	private Long framesSinceLastSecond = 0L;
-	private Double fps = 0.0;
-	private Logic logic = new Logic();
+    private GameState containingState;
+    private GameField currentlySelected;
+    private GameField lastField;
+    private Set<Position> lastAttackables;
+    private Set<Position> lastAttackables2;
+    private List<Position> lastDestinations;
+    private Unit lastUnit;
+    private List<Position> path;
+    private Long startingTime;
+    private Long timeElapsed = 0L;
+    private Long framesSinceLastSecond = 0L;
+    private Double fps = 0.0;
+    private Logic logic = new Logic();
 
-	public InformationState(final GameState state) {
-		containingState = state;
-	}
+    public InformationState(final GameState state) {
+        containingState = state;
+    }
 
-	public List<Position> getPath() {
-		if (path == null || lastDestinations == null
-				|| lastDestinations.size() == 0) {
-			return new ArrayList<Position>(0);
-		}
+    public List<Position> getPath() {
+        if (path == null || lastDestinations == null
+                || lastDestinations.size() == 0) {
+            return new ArrayList<Position>(0);
+        }
 
-		return path;
-	}
+        return path;
+    }
 
-	public void setPath(final List<Position> path) {
-		this.path = path;
-	}
+    public void setPath(final List<Position> path) {
+        this.path = path;
+    }
 
-	public Set<Position> getAttackables() {
-		if (lastAttackables == null) {
-			return new HashSet<Position>(0);
-		}
+    public Set<Position> getAttackables() {
+        if (lastAttackables == null) {
+            return new HashSet<Position>(0);
+        }
 
-		return lastAttackables;
-	}
+        return lastAttackables;
+    }
 
-	public Set<Position> getTargets() {
-		if (lastAttackables2 == null) {
-			return new HashSet<Position>(0);
-		}
+    public Set<Position> getTargets() {
+        if (lastAttackables2 == null) {
+            return new HashSet<Position>(0);
+        }
 
-		return lastAttackables2;
-	}
+        return lastAttackables2;
+    }
 
-	public List<Position> getUnitDestinations() {
-		return getUnitDestinations(currentlySelected);
-	}
+    public List<Position> getUnitDestinations() {
+        return getUnitDestinations(currentlySelected);
+    }
 
-	public List<Position> getUnitDestinations(final GameField field) {
-		List<Position> unitDests = new ArrayList<Position>(0);
+    public List<Position> getUnitDestinations(final GameField field) {
+        List<Position> unitDests = new ArrayList<Position>(0);
 
-		if (field == null) {
-			return unitDests;
-		}
+        if (field == null) {
+            return unitDests;
+        }
 
-		if (!field.hostsUnit()) {
-			lastUnit = null;
-			lastField = null;
-			lastAttackables = null;
-			lastAttackables2 = null;
-			path = null;
-			return unitDests;
-		}
-		Unit u = field.getUnit();
-		if (field.hostsUnit()
-				&& (u.getOwner() != containingState.getCurrentPlayer())) {
-			u.resetMovement(); // redraw move distance when its not ur turn}
-			u.resetTurnStatistics2();
-		}
+        if (!field.hostsUnit()) {
+            lastUnit = null;
+            lastField = null;
+            lastAttackables = null;
+            lastAttackables2 = null;
+            path = null;
+            return unitDests;
+        }
+        Unit u = field.getUnit();
+        if (field.hostsUnit()
+                && (u.getOwner() != containingState.getCurrentPlayer())) {
+            u.resetMovement(); // redraw move distance when its not ur turn}
+            u.resetTurnStatistics2();
+        }
 
-		// cant show range of enemy stealth or subs
-		if ((u.hasFinishedTurn() && (u.getOwner() == containingState
-				.getCurrentPlayer()))
-				|| (u.getName().equals("Stealth") && (u.getOwner() != containingState
-						.getCurrentPlayer()))
-				|| (u.getName().equals("Submarine") && (u.getOwner() != containingState
-						.getCurrentPlayer()))) {
-			lastAttackables = null;
-			lastAttackables2 = null;
-			if (u.hasMoved()) { // ranged units move path no longer show
-				path = null;
-			}
-		} else {
-			if ((lastDestinations == null || lastUnit == null
-					|| lastField == null || lastAttackables == null || lastAttackables2 == null)
-					&& !u.hasMoved()) {
-				lastUnit = u;
-				lastField = field;
+        // cant show range of enemy stealth or subs
+        if ((u.hasFinishedTurn() && (u.getOwner() == containingState
+                                     .getCurrentPlayer()))
+                || (u.getName().equals("Stealth") && (u.getOwner() != containingState
+                        .getCurrentPlayer()))
+                || (u.getName().equals("Submarine") && (u.getOwner() != containingState
+                        .getCurrentPlayer()))) {
+            lastAttackables = null;
+            lastAttackables2 = null;
+            if (u.hasMoved()) { // ranged units move path no longer show
+                path = null;
+            }
+        } else {
+            if ((lastDestinations == null || lastUnit == null
+                    || lastField == null || lastAttackables == null || lastAttackables2 == null)
+                    && !u.hasMoved()) {
+                lastUnit = u;
+                lastField = field;
 
-				int myGo = 1;
-				if (u.getOwner() != containingState.getCurrentPlayer()
-						&& u.isRanged) {
-					// unitDests = logic.destinations(containingState.getMap(),
-					// u);
-					lastDestinations = null;
-					lastAttackables = logic.getAttackableUnitPositions(myGo,
-							containingState.getMap(), u);
-					myGo = 0;
-					lastAttackables2 = logic.getAttackableUnitPositions(myGo,
-							containingState.getMap(), u);
-				} else {
-					unitDests = logic.destinations(containingState.getMap(), u);
-					lastDestinations = unitDests;
-					myGo = 1; // run this for the specific squares
-					lastAttackables = logic.getAttackableUnitPositions(myGo,
-							containingState.getMap(), u);
-					myGo = 0; // display every square
-					lastAttackables2 = logic.getAttackableUnitPositions(myGo,
-							containingState.getMap(), u);
-				}
+                int myGo = 1;
+                if (u.getOwner() != containingState.getCurrentPlayer()
+                        && u.isRanged) {
+                    // unitDests = logic.destinations(containingState.getMap(),
+                    // u);
+                    lastDestinations = null;
+                    lastAttackables = logic.getAttackableUnitPositions(myGo,
+                                      containingState.getMap(), u);
+                    myGo = 0;
+                    lastAttackables2 = logic.getAttackableUnitPositions(myGo,
+                                       containingState.getMap(), u);
+                } else {
+                    unitDests = logic.destinations(containingState.getMap(), u);
+                    lastDestinations = unitDests;
+                    myGo = 1; // run this for the specific squares
+                    lastAttackables = logic.getAttackableUnitPositions(myGo,
+                                      containingState.getMap(), u);
+                    myGo = 0; // display every square
+                    lastAttackables2 = logic.getAttackableUnitPositions(myGo,
+                                       containingState.getMap(), u);
+                }
 
-				path = null;
-				return unitDests;
-			}
-			if (u.equals(lastUnit) && field.equals(lastField)) {
-				return lastDestinations;
-			}
-			if (field.hostsUnit()) { // /
-				lastUnit = null;
-				lastField = null;
-				lastAttackables = null;
-				lastAttackables2 = null;
-				path = null;
-			}
-		}
-		if (u.hasMoved() && u.getOwner() == containingState.getCurrentPlayer()
-				&& !u.hasFinishedTurn()) {
-			path = null;
-			int myGo = 1;
-			lastAttackables = logic.getAttackableUnitPositions(myGo,
-					containingState.getMap(), u);
-			myGo = 0; // display every square
-			lastAttackables2 = logic.getAttackableUnitPositions(myGo,
-					containingState.getMap(), u);
-			// ////////
-		}
-		// u.resetMovement();
-		// u.reduceMovement(u.getRemainingMovement());
+                path = null;
+                return unitDests;
+            }
+            if (u.equals(lastUnit) && field.equals(lastField)) {
+                return lastDestinations;
+            }
+            if (field.hostsUnit()) { // /
+                lastUnit = null;
+                lastField = null;
+                lastAttackables = null;
+                lastAttackables2 = null;
+                path = null;
+            }
+        }
+        if (u.hasMoved() && u.getOwner() == containingState.getCurrentPlayer()
+                && !u.hasFinishedTurn()) {
+            path = null;
+            int myGo = 1;
+            lastAttackables = logic.getAttackableUnitPositions(myGo,
+                              containingState.getMap(), u);
+            myGo = 0; // display every square
+            lastAttackables2 = logic.getAttackableUnitPositions(myGo,
+                               containingState.getMap(), u);
+            // ////////
+        }
+        // u.resetMovement();
+        // u.reduceMovement(u.getRemainingMovement());
 
-		return unitDests;
-	}
+        return unitDests;
+    }
 
-	public void startFrame() {
-		startingTime = System.currentTimeMillis();
-	}
+    public void startFrame() {
+        startingTime = System.currentTimeMillis();
+    }
 
-	public void endFrame() {
-		framesSinceLastSecond++;
+    public void endFrame() {
+        framesSinceLastSecond++;
 
-		timeElapsed += System.currentTimeMillis() - startingTime;
+        timeElapsed += System.currentTimeMillis() - startingTime;
 
-		if (timeElapsed >= 1000) {
-			fps = framesSinceLastSecond / (timeElapsed * 0.001);
-			framesSinceLastSecond = 0L;
-			timeElapsed = 0L;
-		}
-	}
+        if (timeElapsed >= 1000) {
+            fps = framesSinceLastSecond / (timeElapsed * 0.001);
+            framesSinceLastSecond = 0L;
+            timeElapsed = 0L;
+        }
+    }
 
-	public Double getFps() {
-		return fps;
-	}
+    public Double getFps() {
+        return fps;
+    }
 
 }

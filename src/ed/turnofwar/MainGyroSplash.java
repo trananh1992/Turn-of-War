@@ -31,7 +31,7 @@
  See the License for the specific language governing permissions and
  limitations under the License.*/
 
-package ed.turnofwar;
+package uk.co.fuuzetsu.turnofwar;
 
 import android.app.Activity;
 import android.content.Intent;

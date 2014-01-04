@@ -33,7 +33,7 @@
  * along with Dragon Wars. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package ed.turnofwar.engine;
+package uk.co.fuuzetsu.turnofwar.engine;
 
 /* Generates a GameField based on a flat text file. Test solution. */
 

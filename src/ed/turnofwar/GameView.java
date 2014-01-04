@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with Turn of War. If not, see <http://www.gnu.org/licenses/>.
  */
-package ed.turnofwar;
+package uk.co.fuuzetsu.turnofwar;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;

@@ -14,7 +14,7 @@
  * along with Dragon Wars. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package ed.turnofwar.engine;
+package uk.co.fuuzetsu.turnofwar.engine;
 
 public interface Func<I, O> {
 	O apply(I i);

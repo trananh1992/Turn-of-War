@@ -33,7 +33,7 @@
  * along with Dragon Wars. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package ed.turnofwar;
+package uk.co.fuuzetsu.turnofwar;
 
 import java.util.Map;
 

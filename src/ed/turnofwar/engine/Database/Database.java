@@ -14,7 +14,7 @@
  * along with Dragon Wars. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package ed.turnofwar.engine.Database;
+package uk.co.fuuzetsu.turnofwar.engine.Database;
 
 import java.util.ArrayList;
 import java.util.List;

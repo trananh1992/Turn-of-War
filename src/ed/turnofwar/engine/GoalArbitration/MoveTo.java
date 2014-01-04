@@ -14,7 +14,7 @@
  * along with Dragon Wars. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package ed.turnofwar.engine.GoalArbitration;
+package uk.co.fuuzetsu.turnofwar.engine.GoalArbitration;
 
 import ed.turnofwar.engine.GameState;
 import ed.turnofwar.engine.Position;

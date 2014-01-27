@@ -42,15 +42,15 @@ import java.util.Map;
 import android.graphics.Bitmap;
 
 public class Player {
-    private String name;
-    private Boolean lost;
+    private final String name;
+    private final Boolean lost;
     private Integer gold = 0;
-    private Integer colour;
+    private final Integer colour;
     private Bitmap flag;
     private Map<String, Bitmap> unitSprites;
 
-    private List<Unit> ownedUnits = new ArrayList<Unit>();
-    private List<Building> ownedBuildings = new ArrayList<Building>();
+    private final List<Unit> ownedUnits = new ArrayList<Unit>();
+    private final List<Building> ownedBuildings = new ArrayList<Building>();
     private boolean isAi = false;
 
     public Player(String name, final Integer colour) {
@@ -65,8 +65,8 @@ public class Player {
 
     public final Boolean hasLost() {
         Boolean hasHQ = true;
-        for (Building b : getOwnedBuildings()) {
-            if (b.isGoalBuilding()) {
+        for (Unit u : getOwnedUnits()) {
+            if (u.getName().equals("CommandVehicle")) {
                 hasHQ = false;
             }
         }
@@ -105,7 +105,8 @@ public class Player {
         this.ownedBuildings.add(building);
     }
 
-    public final String toString() {
+    @Override
+	public final String toString() {
         return name;
     }
 

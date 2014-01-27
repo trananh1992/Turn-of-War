@@ -2,10 +2,10 @@
 	"mapName": "EdsMap",
 	"sizeX": 25,
 	"sizeY": 12,
-	"players": 2,
+	"players": 3,
 	"_comment" : "[-571062 red, -13000705 blue, -9256376 leaf green, -7623 yellow, bubblegum pink -1804345, -8495908 purple, -10586212 stealth grey, -3932416 vibrant green ]",
 	"_comment" : ": [ -571062, -13000705, -9256376, -7623, -1804345,-8495908,-10586212,-3932416]",
-	"playerColours": [ -571062, -13000705],
+	"playerColours": [ -571062, -13000705, -9256376],
 	"fields": {
 		"G": {
 			"name": "Grass",
@@ -14,7 +14,7 @@
 			"package": "uk.co.fuuzetsu.turnofwar",
 			"movementModifier": 1.0,
 			"attackModifier": 1.0,
-			"defenseModifier":1,
+			"defenseModifier":0,
 			"accessible": true,
 			"flightOnly": false,
 			"boatOnly": false
@@ -26,7 +26,7 @@
 			"package": "uk.co.fuuzetsu.turnofwar",
 			"movementModifier": 1.0,
 			"attackModifier": 1.0,
-			"defenseModifier": 2,
+			"defenseModifier": 4,
 			"accessible": true,
 			"flightOnly": false,
 			"boatOnly": false
@@ -137,12 +137,10 @@
 			"ranged": false,
 			"flying": false,
 			"boat": false,
-			"maxHealth": 10,
+			"maxHealth": 2,
 			"mobility": "t",
 			"maxMovement": 5,
-			"attack": 1.0,
-			"meleeDefense": 1.0,
-			"rangeDefense": 1.0,
+			"attack": 1,
 			"productionCost": 2
 		},
 		"b": {
@@ -153,12 +151,10 @@
 			"ranged": false,
 			"flying": false,
 			"boat": false,
-			"maxHealth": 10,
+			"maxHealth": 4,
 			"mobility": "t",
 			"maxMovement": 4,
-			"attack": 1.0,
-			"meleeDefense": 1.0,
-			"rangeDefense": 1.0,
+			"attack": 3,
 			"productionCost": 4
 		},
 		"c": {
@@ -169,12 +165,10 @@
 			"ranged": true,
 			"flying": false,
 			"boat": false,
-			"maxHealth": 10,
+			"maxHealth": 2,
 			"maxMovement": 3,
 			"mobility": "t",
-			"attack": 1.0,
-			"meleeDefense": 1.0,
-			"rangeDefense": 1.0,
+			"attack": 1,
 			"productionCost": 3
 		},
 		"d": {
@@ -185,12 +179,10 @@
 			"ranged": true,
 			"flying": false,
 			"boat": false,
-			"maxHealth": 10,
+			"maxHealth": 2,
 			"mobility": "t",
 			"maxMovement": 3,
-			"attack": 1.0,
-			"meleeDefense": 1.0,
-			"rangeDefense": 1.0,
+			"attack": 4,
 			"productionCost": 3
 		},
 		"e": {
@@ -201,13 +193,11 @@
 			"ranged": false,
 			"flying": false,
 			"boat": false,
-			"maxHealth": 10,
+			"maxHealth": 5,
 			"mobility": "t",
-			"maxMovement": 4,
-			"attack": 1.0,
-			"meleeDefense": 1.0,
-			"rangeDefense": 1.0,
-			"productionCost": 8
+			"maxMovement": 5,
+			"attack": 0,
+			"productionCost": 5
 		},
 		"f": {
 			"name": "Fighter",
@@ -217,12 +207,10 @@
 			"ranged": false,
 			"flying": true,
 			"boat": false,
-			"maxHealth": 10,
+			"maxHealth": 4,
 			"mobility": "",
 			"maxMovement": 8,
-			"attack": 1.0,
-			"meleeDefense": 1.0,
-			"rangeDefense": 1.0,
+			"attack": 3,
 			"productionCost": 4
 		},
 		"g": {
@@ -233,12 +221,10 @@
 			"ranged": false,
 			"flying": true,
 			"boat": false,
-			"maxHealth": 10,
+			"maxHealth": 3,
 			"mobility": "",
 			"maxMovement": 7,
-			"attack": 1.0,
-			"meleeDefense": 1.0,
-			"rangeDefense": 1.0,
+			"attack": 3,
 			"productionCost": 4
 		},
 		"h": {
@@ -249,12 +235,10 @@
 			"ranged": false,
 			"flying": true,
 			"boat": false,
-			"maxHealth": 10,
+			"maxHealth": 2,
 			"mobility": "",
 			"maxMovement": 6,
-			"attack": 1.0,
-			"meleeDefense": 1.0,
-			"rangeDefense": 1.0,
+			"attack": 2,
 			"productionCost": 5
 		},
 		"i": {
@@ -265,12 +249,10 @@
 			"ranged": false,
 			"flying": false,
 			"boat": true,
-			"maxHealth": 10,
+			"maxHealth": 4,
 			"mobility": "",
 			"maxMovement": 5,
-			"attack": 1.0,
-			"meleeDefense": 1.0,
-			"rangeDefense": 1.0,
+			"attack": 1,
 			"productionCost": 5
 		},
 		"j": {
@@ -281,12 +263,10 @@
 			"ranged": false,
 			"flying": false,
 			"boat": true,
-			"maxHealth": 10,
+			"maxHealth": 1,
 			"mobility": "",
 			"maxMovement": 6,
-			"attack": 1.0,
-			"meleeDefense": 1.0,
-			"rangeDefense": 1.0,
+			"attack": 3,
 			"productionCost": 5
 		},
 		"k": {
@@ -297,12 +277,10 @@
 			"ranged": true,
 			"flying": false,
 			"boat": true,
-			"maxHealth": 10,
+			"maxHealth": 6,
 			"mobility": "",
-			"maxMovement": 5,
-			"attack": 1.0,
-			"meleeDefense": 1.0,
-			"rangeDefense": 1.0,
+			"maxMovement": 4,
+			"attack": 3,
 			"productionCost": 9
 		},
 		"l": {
@@ -313,13 +291,11 @@
 			"ranged": true,
 			"flying": false,
 			"boat": true,
-			"maxHealth": 10,
+			"maxHealth": 2,
 			"mobility": "",
 			"maxMovement": 5,
-			"attack": 1.0,
-			"meleeDefense": 1.0,
-			"rangeDefense": 1.0,
-			"productionCost": 4
+			"attack": 4,
+			"productionCost": 3
 		},
 		"m": {
 			"name": "MissileSub",
@@ -329,36 +305,22 @@
 			"ranged": true,
 			"flying": false,
 			"boat": true,
-			"maxHealth": 10,
+			"maxHealth": 1,
 			"mobility": "",
-			"maxMovement": 4,
-			"attack": 1.0,
-			"meleeDefense": 1.0,
-			"rangeDefense": 1.0,
+			"maxMovement": 5,
+			"attack": 2,
 			"productionCost": 10
 			}
 		},
 	"buildings": {
-		"H": {
-			"name": "hq",
-			"file": "hq",
-			"dir": "drawable",
-			"package": "uk.co.fuuzetsu.turnofwar",
-			"captureDifficulty": 20,
-			"attackBonus": 1.0,
-			"defenseBonus": 4,
-			"goalBuilding": true,
-			"captureWorth": 0
-		},
 		"C": {
 			"name": "oilfield",
 			"file": "oilfield",
 			"dir": "drawable",
 			"package": "uk.co.fuuzetsu.turnofwar",
-			"captureDifficulty": 20,
+			"captureDifficulty": 10,
 			"attackBonus": 1.0,
-			"defenseBonus": 3,
-			"goalBuilding": false,
+			"defenseBonus": 2,
 			"captureWorth": 1
 		},
 		"L": {
@@ -366,10 +328,9 @@
 			"file": "landfac",
 			"dir": "drawable",
 			"package": "uk.co.fuuzetsu.turnofwar",
-			"captureDifficulty": 20,
+			"captureDifficulty": 10,
 			"attackBonus": 1.0,
-			"defenseBonus": 3,
-			"goalBuilding": false,
+			"defenseBonus": 4,
 			"captureWorth": 1
 		},
 		"A": {
@@ -377,10 +338,9 @@
 			"file": "airfac",
 			"dir": "drawable",
 			"package": "uk.co.fuuzetsu.turnofwar",
-			"captureDifficulty": 20,
+			"captureDifficulty": 10,
 			"attackBonus": 1.0,
-			"defenseBonus": 3,
-			"goalBuilding": false,
+			"defenseBonus": 4,
 			"captureWorth": 1
 		},
 		"S": {
@@ -388,10 +348,9 @@
 			"file": "seafac",
 			"dir": "drawable",
 			"package": "uk.co.fuuzetsu.turnofwar",
-			"captureDifficulty": 20,
+			"captureDifficulty": 10,
 			"attackBonus": 1.0,
-			"defenseBonus": 3,
-			"goalBuilding": false,
+			"defenseBonus": 4,
 			"captureWorth": 1
 		}
 	},
@@ -431,18 +390,18 @@
 		{"building": "C",
 			"posX": 21,
 			"posY": 3,
-			"owner": 2,
+			"owner": 0,
 			"produces": []
 		},
 		{"building": "C",
 			"posX": 21,
 			"posY": 7,
-			"owner": 2,
+			"owner": 0,
 			"produces": []
 		},
 		{"building": "C",
-			"posX": 18,
-			"posY": 2,
+			"posX": 6,
+			"posY": 5,
 			"owner": 0,
 			"produces": []
 		},
@@ -450,19 +409,13 @@
 		{"building": "C",
 			"posX": 5,
 			"posY": 5,
-			"owner": 1,
+			"owner": 0,
 			"produces": []
 		},
-		{"building": "H",
-			"posX": 18,
+		{"building": "C",
+			"posX": 5,
 			"posY": 5,
-			"owner": 1,
-			"produces": []
-		},
-		{"building": "H",
-			"posX": 17,
-			"posY": 6,
-			"owner": 2,
+			"owner": 0,
 			"produces": []
 		},
 		{"building": "A",
@@ -500,7 +453,7 @@
 		},
 		{"unit": "d",
 			"posX": 6,
-			"posY": 5,
+			"posY": 4,
 			"owner": 2
 		},
 		{"unit": "d",
@@ -510,6 +463,11 @@
 		},
 		{"unit": "h",
 			"posX": 7,
+			"posY": 3,
+			"owner": 2
+		},
+		{"unit": "h",
+			"posX": 6,
 			"posY": 3,
 			"owner": 1
 		},
@@ -530,7 +488,7 @@
 		},
 		{"unit": "l",
 			"posX": 8,
-			"posY": 1,
+			"posY": 0,
 			"owner": 1
 		},
 		{"unit": "d",
@@ -621,6 +579,31 @@
 			"posX": 9,
 			"posY": 3,
 			"owner": 1
+		},
+		{"unit": "i",
+			"posX": 10,
+			"posY": 3,
+			"owner": 2
+		},
+		{"unit": "m",
+			"posX": 9,
+			"posY": 2,
+			"owner": 1
+		},
+		{"unit": "j",
+			"posX": 9,
+			"posY": 1,
+			"owner": 1
+		},
+		{"unit": "e",
+			"posX": 8,
+			"posY": 5,
+			"owner": 1
+		},
+		{"unit": "e",
+			"posX": 7,
+			"posY": 5,
+			"owner": 3
 		},
 		{"unit": "e",
 			"posX": 9,

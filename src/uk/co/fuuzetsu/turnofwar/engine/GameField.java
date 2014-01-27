@@ -41,9 +41,10 @@ public final class GameField extends DrawableMapObject {
 
     private Unit hostedUnit;
     private Building hostedBuilding;
-    private Double movementModifier;
-    private Double defenseModifier, attackModifier;
-    private Boolean flightOnly, boatOnly, accessible;
+    private final Double movementModifier;
+    private final Double defenseModifier, attackModifier;
+    private final Boolean flightOnly, boatOnly;
+	private Boolean accessible;
 
     private static DecimalFormat decformat = new DecimalFormat("#.##");
 
@@ -71,7 +72,7 @@ public final class GameField extends DrawableMapObject {
         if ((this.getName().equals("Mountain") || this.getName()
                 .equals("River"))
                 && (unit.getMobility().equals("i") || unit.getMobility()
-                    .equals("m"))) { // infantry and mechs can go on
+                    .equals("m"))) { // infantry can go on
             // mountains and rivers
             this.accessible = true;
         }
@@ -171,7 +172,8 @@ public final class GameField extends DrawableMapObject {
         this.hostedUnit = unit;
     }
 
-    public String toString() {
+    @Override
+	public String toString() {
         return getName();
     }
 

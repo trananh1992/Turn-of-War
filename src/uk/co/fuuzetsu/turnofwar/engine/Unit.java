@@ -38,18 +38,21 @@ package uk.co.fuuzetsu.turnofwar.engine;
 import java.text.DecimalFormat;
 
 public class Unit extends DrawableMapObject {
-    private String mobility;
-    private Integer maxMovement, movement;
-    private Double maxHealth, health, lastDamage;
-    private Double attack, meleeDefense, rangeDefense;
+    private final String mobility;
+    private final Integer maxMovement;
+	private Integer movement;
+    private final Integer maxHealth;
+	private int health;
+	private Double lastDamage;
+    private final Integer attack;
     private Position position;
     private Boolean hasFinishedTurn = false;
     private Boolean hasMoved = false;
     private Player owner;
     final Boolean isRanged;
-    private Boolean isFlying;
-    private Boolean isBoat;
-    private Integer productionCost;
+    private final Boolean isFlying;
+    private final Boolean isBoat;
+    private final Integer productionCost;
 
     private static DecimalFormat decformat = new DecimalFormat("#.##");
 
@@ -57,9 +60,8 @@ public class Unit extends DrawableMapObject {
     // attack, meleeDefense, rangeDefense, flying,
     // productionCost, file, file2, dir, pack);
 
-    public Unit(final String name, final Double maxHealth, String mobility,
-                final Integer maxMovement, final Double attack,
-                final Double meleeDefense, final Double rangeDefense,
+    public Unit(final String name, final Integer maxHealth, String mobility,
+                final Integer maxMovement, final Integer attack,
                 final Boolean isRanged, final Boolean isFlying,
                 final Boolean isBoat, final Integer productionCost,
                 final String spriteLocation, final String spriteDir,
@@ -76,8 +78,6 @@ public class Unit extends DrawableMapObject {
         this.movement = this.maxMovement;
 
         this.attack = attack;
-        this.meleeDefense = meleeDefense;
-        this.rangeDefense = rangeDefense;
         this.isRanged = isRanged;
         this.isFlying = isFlying;
         this.isBoat = isBoat;
@@ -102,8 +102,6 @@ public class Unit extends DrawableMapObject {
         this.movement = this.maxMovement;
 
         this.attack = unit.getAttack();
-        this.meleeDefense = unit.getMeleeDefense();
-        this.rangeDefense = unit.getRangeDefense();
 
         this.owner = unit.getOwner();
         this.isRanged = unit.isRanged();
@@ -121,11 +119,11 @@ public class Unit extends DrawableMapObject {
         return health <= 0;
     }
 
-    public Double getHealth() {
+    public int getHealth() {
         return this.health;
     }
 
-    public Double getMaxHealth() {
+    public Integer getMaxHealth() {
         return this.maxHealth;
     }
 
@@ -133,16 +131,8 @@ public class Unit extends DrawableMapObject {
         return this.lastDamage;
     }
 
-    public Double getAttack() {
+    public Integer getAttack() {
         return this.attack;
-    }
-
-    public Double getMeleeDefense() {
-        return this.meleeDefense;
-    }
-
-    public Double getRangeDefense() {
-        return this.rangeDefense;
     }
 
     public Position getPosition() {
@@ -170,7 +160,7 @@ public class Unit extends DrawableMapObject {
         this.health -= damage;
 
         if (this.health < 0) {
-            this.health = 0.0;
+            this.health = 0;
         }
     }
 
@@ -178,8 +168,8 @@ public class Unit extends DrawableMapObject {
         this.position = position;
     }
 
-    public void restoreHealth(final Double heal) {
-        Double newHealth = Math.ceil(this.health) + heal;
+    public void restoreHealth(final int heal) {
+        int newHealth = (this.health) + heal;
         this.health = (newHealth <= maxHealth) ? newHealth : maxHealth;
     }
 
@@ -196,7 +186,8 @@ public class Unit extends DrawableMapObject {
         // + this.getSpritePack() + " " + this.getInfo());
     }
 
-    public String toString() {
+    @Override
+	public String toString() {
         return getName();
     }
 
@@ -216,12 +207,12 @@ public class Unit extends DrawableMapObject {
         this.lastDamage = 0.0;
     }
 
-    public Boolean reduceMovement(final Integer amount) {
-        if (this.movement - amount < 0) {
+    public Boolean reduceMovement(final Integer movementCost) {
+        if (this.movement - movementCost < 0) {
             return false;
         }
 
-        this.movement -= amount;
+        this.movement = movementCost;
         return true;
     }
 
@@ -263,7 +254,7 @@ public class Unit extends DrawableMapObject {
 
     @Override
     public final String getInfo() {
-        String r = getName() + " ~ " + "Move Points " + getMaxMovement() + "\n";
+        String r = getName() + " ~ " + "Move Points " + getMaxMovement()/4 + "\n"; //times by 4
         // r += "Health: " + getMaxHealth();
         return r + this.info;
     }

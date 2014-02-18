@@ -3,6 +3,8 @@ Turn of War
 An open-source GPLv3 turn based game for Android in development by Edward Woodhouse, Turn of War is a fork of Dragon Wars.
 Copyright (C) 2013 Ed Woodhouse <edwoodhou@gmail.com>
 
+![Screenshot ingame](http://i.imgur.com/w91gFDk.png?1)
+
 Features
 ===================
 Terrain affects movement and defence

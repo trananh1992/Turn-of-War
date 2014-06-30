@@ -254,7 +254,7 @@ public class Unit extends DrawableMapObject {
 
     @Override
     public final String getInfo() {
-        String r = getName() + " ~ " + "Move Points " + getMaxMovement()/4 + "\n"; //times by 4
+        String r = getName() + " ~ " + "Move Points " + getMaxMovement() + "\n"; //times by 4
         // r += "Health: " + getMaxHealth();
         return r + this.info;
     }

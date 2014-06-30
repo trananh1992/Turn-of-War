@@ -174,7 +174,7 @@ public final class GameState {
 		stats.increaseStatistic("Distance travelled", 1.0 * movementCost);
 
 		Player CurrPlayer = unit.getOwner(); // reset hp if
-		// moved unit
+		// moved unit//
 		// off building
 		movedOfforOnBuildingCaptureCounters(CurrPlayer);
 		if (unit.isRanged()) {
@@ -208,69 +208,62 @@ public final class GameState {
 			}
 			return true;
 		}
-
 		return false;
 	}
 
-	private void updateBuildingRepairUnits(String currString) { // healing
-		// mechanic
-		for (GameField gf : map) {
+	// private void updateBuildingRepairUnits(String currString) { // healing
+	// // mechanic
+	// for (GameField gf : map) {
+	//
+	// /* No building. */
+	// if (!gf.hostsBuilding()) {
+	// continue;
+	// }
+	// /* Unit on the building. */
+	// if (gf.hostsUnit()) {
+	// Unit unit = gf.getUnit();
+	// String[] cArr = currString.split(" ");
+	// String currArr = cArr[1];
+	// int currInt = Integer.parseInt(currArr, 10);
+	//
+	// String Owner = String.valueOf(unit.getOwner());
+	// String[] Arr = Owner.split(" ");
+	// String OwnerArr = Arr[1];
+	// int OwnerInt = Integer.parseInt(OwnerArr, 10);
+	//
+	// int playerCash = unit.getOwner().getGoldAmount();
+	// int healCost = 0;
+	// int healAmount = 0; // hp to restore
+	// healCost = unit.getProductionCost() / 10;
+	//
+	// if (unit.getHealth() < unit.getMaxHealth()
+	// && OwnerInt == currInt
+	// && unit.getOwner() == gf.getBuilding().getOwner()) {
+	// if ((gf.getBuilding().getName().equals("seafac") && unit
+	// .isBoat())
+	// || (gf.getBuilding().getName().equals("airfac") && unit
+	// .isFlying())
+	// || ((gf.getBuilding().getName().equals("landfac")
+	// && !unit.isFlying() && !unit.isBoat()))) {
+	// if (healCost * 2 <= playerCash) {
+	// healAmount = 2;
+	// } else if (healCost <= playerCash
+	// && healCost * 2 >= playerCash) {
+	// healAmount = 1;
+	// } else {
+	// healAmount = 0;
+	// }
+	// unit.restoreHealth(healAmount);
+	// unit.getOwner().setGoldAmount(
+	// (playerCash - (healCost * healAmount)));
+	// }
+	// }
+	// }
+	// }
+	// }
 
-			/* No building. */
-			if (!gf.hostsBuilding()) {
-				continue;
-			}
-			/* Unit on the building. */
-			if (gf.hostsUnit()) {
-				Unit unit = gf.getUnit();
-				String[] cArr = currString.split(" ");
-				String currArr = cArr[1];
-				int currInt = Integer.parseInt(currArr, 10);
-
-				String Owner = String.valueOf(unit.getOwner());
-				String[] Arr = Owner.split(" ");
-				String OwnerArr = Arr[1];
-				int OwnerInt = Integer.parseInt(OwnerArr, 10);
-
-				int playerCash = unit.getOwner().getGoldAmount();
-				int healCost = 0;
-				int healAmount = 0; // hp to restore
-				healCost = unit.getProductionCost() / 10;
-
-				if (unit.getHealth() < unit.getMaxHealth()
-						&& OwnerInt == currInt
-						&& unit.getOwner() == gf.getBuilding().getOwner()) {
-					if ((gf.getBuilding().getName().equals("seafac") && unit
-							.isBoat())
-							|| (gf.getBuilding().getName().equals("airfac") && unit
-									.isFlying())
-							|| ((gf.getBuilding().getName().equals("landfac")
-									&& !unit.isFlying() && !unit.isBoat()))) {
-						if (healCost * 2 <= playerCash) {
-							healAmount = 2;
-						} else if (healCost <= playerCash
-								&& healCost * 2 >= playerCash) {
-							healAmount = 1;
-						} else {
-							healAmount = 0;
-						}
-						unit.restoreHealth(healAmount);
-						unit.getOwner().setGoldAmount(
-								(playerCash - (healCost * healAmount)));
-					}
-				}
-			}
-		}
-	}
-
-	private void movedOfforOnBuildingCaptureCounters(Player currString) { // reset
-		// HP
-		// when
-		// moved
-		// off
-		// building
-		// or
-		// killed
+	private void movedOfforOnBuildingCaptureCounters(Player currString) {
+		// reset HP when moved off building or killed
 		for (GameField gf : map) {
 
 			/* No building. */
@@ -280,7 +273,9 @@ public final class GameState {
 			Building b = gf.getBuilding();
 			if (gf.hostsUnit()) {
 				Unit unit = gf.getUnit();
-				if (!unit.isBoat() && !unit.isFlying()) {
+				if (!unit.getName().equals("Submarine")
+						&& !unit.getName().equals("MissileSub")
+						&& !unit.isFlying()) {
 					b.getOwner().removeBuilding(b);
 					b.setOwner(unit.getOwner());
 
@@ -311,20 +306,12 @@ public final class GameState {
 			income();
 		}
 
-		String nextPlayerComingUp = (players.get(playerIndex).toString()); // these
-		// two
-		// lines
-		// make
-		// repairs
-		// happen
-		// at
-		// start
-		// of
-		// round
-		// instead
-		// of
-		// end
-		updateBuildingRepairUnits(nextPlayerComingUp);
+		// ENABLE REPAIR
+		// String nextPlayerComingUp = (players.get(playerIndex).toString()); //
+		// these
+		// two lines make repairs happen at start of round instead of end
+		//
+		// updateBuildingRepairUnits(nextPlayerComingUp);
 
 		while (iter.hasNext()) {
 			Player p = iter.next();
@@ -404,6 +391,15 @@ public final class GameState {
 		return this.players;
 	}
 
+	public Player getNextPlayer() {
+		int nextPlayer = playerIndex + 1;
+		if (nextPlayer >= players.size()) {
+			return players.get(0);
+		} else {
+			return players.get(nextPlayer);
+		}
+	}
+
 	public Player getCurrentPlayer() {
 		if (players.size() > playerIndex) {
 			return players.get(playerIndex);
@@ -453,7 +449,6 @@ public final class GameState {
 				return true;
 			}
 		}
-
 		return false;
 	}
 }

@@ -41,7 +41,9 @@ import uk.co.fuuzetsu.turnofwar.engine.Pair;
 import uk.co.fuuzetsu.turnofwar.engine.Player;
 import uk.co.fuuzetsu.turnofwar.engine.Position;
 import uk.co.fuuzetsu.turnofwar.engine.Unit;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
@@ -522,13 +524,16 @@ public final class GameView extends SurfaceView implements
 
 						double fullHpCheck = Double.parseDouble(healthText);
 						String damageText = decformat.format(unit.getAttack());
-
+						int amount = 42;
+						if (unit.isBoat()) {
+							amount = amount + 30;
+						}
 						if (unit.hasFinishedTurn() == true
 								&& unit.getOwner() == state.getCurrentPlayer()) {
-							canvas.drawText("x", dest.left + 40,
-									dest.bottom - 2, movedOutlinePaint);
-							canvas.drawText("x", dest.left + 40,
-									dest.bottom - 2, movedPaint);
+							canvas.drawText("x", dest.right - 20, dest.top
+									+ amount, movedOutlinePaint);
+							canvas.drawText("x", dest.right - 20, dest.top
+									+ amount, movedPaint);
 						}
 						if (fullHpCheck != 100) {// otherwise hide hp
 							if ((unit.getOwner() != state.getCurrentPlayer())
@@ -537,7 +542,7 @@ public final class GameView extends SurfaceView implements
 											.getName().equals("MissileSub"))))) {
 
 							} else {
-								int amount = -3;
+								amount = -3;
 								if (unit.isBoat()) {
 									amount = amount + 30;
 								}
@@ -646,9 +651,9 @@ public final class GameView extends SurfaceView implements
 			info += unit.getInfo();
 		} else if (unit != null && unit.getName().equals("MissileSub")
 				&& (unit.getOwner() == state.getCurrentPlayer())) {
-			info += unit.getInfo() + "Fires 3-8 Vs Ground + Naval non sub";
+			info += unit.getInfo() + "Fires 3-7 Vs Ground + Naval non sub";
 		} else if (unit != null && unit.getName().equals("RocketTruck")) {
-			info += unit.getInfo() + "Fires 2-4 Vs Ground + Naval non sub";
+			info += unit.getInfo() + "Fires 3-5 Vs Ground + Naval non sub";
 		} else if (unit != null && unit.getName().equals("AntiAir")) {
 			info += unit.getInfo() + "Fires 3-5 Vs Air, non stealth";
 		} else if (unit != null && unit.getName().equals("AntiAirBoat")) {
@@ -749,6 +754,7 @@ public final class GameView extends SurfaceView implements
 		return false;
 	}
 
+	@SuppressLint("NewApi")
 	@Override
 	public boolean onSingleTapConfirmed(final MotionEvent event) {
 		/* Coordinates of the pressed tile */
@@ -762,23 +768,10 @@ public final class GameView extends SurfaceView implements
 			if (!state.getCurrentPlayer().isAi()) {
 				GameField newselectedField = map.getField(newselected);
 				if (!state.getAttackables().contains(newselected)) { // allow
-					// units
-					// to
-					// move
-					// to
-					// squares
-					// which
-					// are
-					// highlighted
-					// by
-					// attack
-					// if
-					// (!state.getAttackables().contains(newselected)
-					// ||
-					// !(state.getAttackables().contains(newselected)
-					// &&
-					// !(map.getField(selected).hostsUnit())))
-					// {
+					// units to move to squares which are highlighted by attack
+					// if (!state.getAttackables().contains(newselected) ||
+					// !(state.getAttackables().contains(newselected) &&
+					// !(map.getField(selected).hostsUnit()))) {
 					if (map.getField(selected).hostsUnit()) {
 						// Log.d(TAG, "A unit is selected!");
 						/*
@@ -797,7 +790,9 @@ public final class GameView extends SurfaceView implements
 									.getUnitDestinations(selectedField);
 							if (unit.hasMoved()
 									&& !newselectedField.hostsBuilding()
-									&& !selectedField.hostsBuilding()) {
+									&& !selectedField.hostsBuilding()
+									|| (unit.hasMoved() && unit.getName()
+											.equals("Submarine"))) {
 								unit.setFinishedTurn(true);
 							} else {// if the building belongs to the player
 								// then mark the infantry as moved anyway
@@ -838,11 +833,11 @@ public final class GameView extends SurfaceView implements
 									this.getContext());
 							String menuTitle = "";
 							if (building.getName().equals("airfac")) {
-								menuTitle = "Airport";
+								menuTitle = "Airport:  $" + building.getOwner().getGoldAmount() + " Mil assets";
 							} else if ((building.getName()).equals("landfac")) {
-								menuTitle = "Land Factory";
+								menuTitle = "Factory:  $" + building.getOwner().getGoldAmount() + " Mil assets";
 							} else if ((building.getName()).equals("seafac")) {
-								menuTitle = "Shipyard";
+								menuTitle = "Port:  $" + building.getOwner().getGoldAmount() + " Mil assets";
 							}
 
 							buildmenuBuilder.setTitle(menuTitle);
@@ -859,8 +854,8 @@ public final class GameView extends SurfaceView implements
 
 							buildableNames[units.size()] = "Cancel";
 							buildmenuBuilder.setItems(buildableNames, this);
-							buildmenuBuilder.create().show();
 
+							buildmenuBuilder.create().show();
 						} // build menu isn't shown if it isn't the user's turn
 					}
 				} else { // attack
@@ -944,24 +939,73 @@ public final class GameView extends SurfaceView implements
 				.setPositiveButton("OK", null).show();
 	}
 
+	@SuppressLint("NewApi")
 	@Override
 	public void onClick(final View arg0) {
 		// This onClick is for the Menu button
-		try {
-			state.nextPlayer();
-			stealth(); // stealth planes and subs
-			Log.d(TAG, "advancing player");
-			Toast.makeText(context,
-					String.format("%s's turn!", state.getCurrentPlayer()),
-					Toast.LENGTH_SHORT).show();
-		} catch (GameFinishedException e) {
-			Player winner = e.getWinner();
-			Toast.makeText(context,
-					String.format("%s has won the game!", winner.getName()),
-					Toast.LENGTH_SHORT).show();
-			Log.d(TAG, state.getStatistics().toString());
-			dt.setRunning(false);
-			activity.endGame();
+
+		int currentApiVersion = android.os.Build.VERSION.SDK_INT;
+
+		// This work only for android 4.4+
+
+		if (currentApiVersion >= 11) {
+			Builder alert = new AlertDialog.Builder(context,
+					android.R.style.Theme_Holo_NoActionBar_Fullscreen);
+
+			alert.setMessage(state.getNextPlayer() + "'s turn");
+
+			alert.setPositiveButton("OK",
+					new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog,
+								int whichButton) {
+							try {
+								state.nextPlayer();
+
+								stealth();
+							} catch (GameFinishedException e) {
+								Player winner = e.getWinner();
+								Toast.makeText(
+										context,
+										String.format("%s has won the game!",
+												winner.getName()),
+										Toast.LENGTH_SHORT).show();
+								Log.d(TAG, state.getStatistics().toString());
+								dt.setRunning(false);
+								activity.endGame();
+
+							}
+						}
+					});
+			alert.show();
+
 		}
+
+		// Handler handler = new Handler();
+		// handler.postDelayed(new Runnable() {
+		// @Override
+		// public void run() {
+		//
+		// }
+		// }, 5000); // 1500 seconds
+
+		// stealth planes and subs
+
+		// dialog.hide();
+
+		Log.d(TAG, "advancing player");
+
+		// Toast.makeText(context,
+		// String.format("%s's turn!", state.getCurrentPlayer()),
+		// Toast.LENGTH_SHORT).show();
+
 	}
+
+	// public void clickEvent(View v)
+	// {
+	// Button b = (Button) findViewById(R.id.ready);
+	// b.setText("Next Player");
+	// //b.setBackgroundColor(color.transparent);
+	// }
+
 }

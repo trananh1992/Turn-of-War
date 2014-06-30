@@ -377,11 +377,11 @@ public final class MapReader {
 			Integer maxHealth = f.getInt("maxHealth");
 			String mobility = f.getString("mobility");
 			Integer maxMovement;
-			if (!(flying || boat)) {
-				maxMovement = f.getInt("maxMovement") * 4; // times by 4
-			}else{
+			//if (!(flying || boat)) {//uncommented for more speed but no terrain effect
+			//	maxMovement = f.getInt("maxMovement") * 4; // times by 4
+			//}else{
 				maxMovement = f.getInt("maxMovement");
-			}
+			//}
 
 			Integer attack = f.getInt("attack");
 			Integer productionCost = f.getInt("productionCost");

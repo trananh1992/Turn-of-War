@@ -357,8 +357,8 @@ public final class Logic {
 		int y = 0;
 
 		if (name.equals("RocketTruck")) {
-			min = 2;
-			max = 4;
+			min = 3; //was 2 4
+			max = 5;
 		} else if (name.equals("AntiAir")) {
 			min = 3;
 			max = 5;
@@ -370,7 +370,7 @@ public final class Logic {
 			max = 6;
 		} else if (name.equals("MissileSub")) {
 			min = 3;
-			max = 8;
+			max = 7;
 		}
 		for (x = -max; x <= +max; x++) {
 			for (y = -max; y <= +max; y++) {
@@ -477,32 +477,33 @@ public final class Logic {
 			final Position origin) {
 		/* g(x) for search */
 		// flying units ignore this; always 1
-		Double moveCost = 100.0; // unit wont move if everything isnt set up
 		// right
-		if (unit.isFlying() || unit.isBoat()) {
+		// if (unit.isFlying() || unit.isBoat()) {
+		// return 1.0;
+		// } else if (!unit.isBoat() && !unit.isFlying()) {
+		// if (unit.getMobility().equals("t")) {// tread
+		// if (map.getField(origin).getName().equals("Grass")) {
+		// return 1.0;
+		// } else if (map.getField(origin).getName().equals("Sand")) {
+		// return 4.0;
+		if (map.getField(origin).getName().equals("Forest") && !unit.isFlying()) {
+			return 2.0;
+		} else {
 			return 1.0;
-		} else if (!unit.isBoat() && !unit.isFlying()) {
-			if (unit.getMobility().equals("t")) {// tread
-				if (map.getField(origin).getName().equals("Grass")) {
-					return 4.0;
-				} else if (map.getField(origin).getName().equals("Sand")) {
-					return 4.0;
-				} else if (map.getField(origin).getName().equals("Forest")) {
-					return 7.0;
-				} else if (map.getField(origin).getName().equals("Mountain")) {
-					return 4.0;
-				} else if (map.getField(origin).getName().equals("River")) {
-					return 4.0;
-				} else if (map.getField(origin).getName().equals("Highway")) {
-					return 3.0;
-				} else {
-					return 1.0;
-				}
-			} else {
-				return 1.0;
-			}
 		}
-		return moveCost;
+		// } else if (map.getField(origin).getName().equals("Mountain")) {
+		// return 4.0;
+		// } else if (map.getField(origin).getName().equals("River")) {
+		// return 4.0;
+		// } else if (map.getField(origin).getName().equals("Highway")) {
+		// return 3.0;
+		// } else {
+		// return 1.0;
+		// }
+		// } else {
+		// return 1.0;
+		// }
+		// }
 	}
 
 	public Set<Position> getAttackableUnitPositions(final int myGo,
@@ -523,35 +524,33 @@ public final class Logic {
 						if (unit.getName().equals("Tank")
 								|| unit.getName().equals("HeavyTank")) {
 							if (hostile
-									&& (!target.isBoat() && !target.isFlying())) { // shoot
-								// at
-								// all
-								// ground
-								// units
+							// && (!target.isBoat() && !target.isFlying()) ) {
+									// shoot at all ground units
+
+									&& (!target.getName().equals("Submarine")
+											&& !target.getName().equals(
+													"MissileSub") && !target
+												.isFlying())) {
+								// shoot at all ground and surface naval
 								atkUnits.add(p);
 							}
 						} else if (unit.getName().equals("AntiAir")
 								|| unit.getName().equals("AntiAirBoat")) {
 							if (hostile && !target.getName().equals("Stealth")
-									&& target.isFlying()) { // shoot at all air
-								// units, not
-								// stealth
+									&& target.isFlying()) {
+								// shoot at all air units, not stealth
 								atkUnits.add(p);
 							}
 						} else if (unit.getName().equals("Fighter")) {
-							if (hostile && target.isFlying()) { // shoot at all
-								// air units
+							if (hostile && target.isFlying()) {
+								// shoot at all air units
 								atkUnits.add(p);
 							}
 						} else if (unit.getName().equals("Stealth")) {
 							if (hostile
 									&& !target.getName().equals("Submarine")
-									&& !target.getName().equals("MissileSub")) { // shoot
-								// at
-								// all
-								// apart
-								// from
-								// subs
+									&& !target.getName().equals("MissileSub")) {
+								// shoot at all apart from subs
 								atkUnits.add(p);
 							}
 						} else if (unit.getName().equals("Destroyer")) {

@@ -78,21 +78,7 @@ public final class GameField extends DrawableMapObject {
         }
 
         if (this.hostsBuilding() && this.flightOnly && !unit.isFlying()) { // allow
-            // ports
-            // to
-            // be
-            // stepped
-            // on
-            // by
-            // land
-            // units
-            // (test
-            // for
-            // a
-            // building
-            // in
-            // the
-            // sea)
+            // ports to be stepped on by land units (test for a building in the sea)
             this.accessible = true;
         }
 

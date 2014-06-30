@@ -29,7 +29,7 @@ import android.widget.Button;
 
 public class MainMenuActivity extends Activity implements OnClickListener {
 
-    private Button btnBattle, btnStats, btnQuit, btnHelp;
+    private Button btnBattle, btnStats, btnHelp;
 
     @Override
     protected final void onCreate(final Bundle savedInstanceState) {
@@ -45,8 +45,8 @@ public class MainMenuActivity extends Activity implements OnClickListener {
         this.btnHelp = (Button) this.findViewById(R.id.btnHelp);
         this.btnHelp.setOnClickListener(this);
 
-        this.btnQuit = (Button) this.findViewById(R.id.btnQuit);
-        this.btnQuit.setOnClickListener(this);
+//        this.btnQuit = (Button) this.findViewById(R.id.btnQuit);
+//        this.btnQuit.setOnClickListener(this);
 
     }
 
@@ -87,8 +87,8 @@ public class MainMenuActivity extends Activity implements OnClickListener {
             startActivity(intent);
         }
 
-        if (v == this.btnQuit) {
-            System.exit(0);
-        }
+//        if (v == this.btnQuit) {
+//            System.exit(0);
+//        }
     }
 }

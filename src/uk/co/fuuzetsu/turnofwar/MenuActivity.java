@@ -64,8 +64,8 @@ public class MenuActivity extends Activity implements OnClickListener {
         this.btnHelp = (Button) this.findViewById(R.id.btnHelp);
         this.btnHelp.setOnClickListener(this);
 
-        this.btnQuit = (Button) this.findViewById(R.id.btnQuit);
-        this.btnQuit.setOnClickListener(this);
+//        this.btnQuit = (Button) this.findViewById(R.id.btnQuit);
+//        this.btnQuit.setOnClickListener(this);
 
     }
 
@@ -106,9 +106,9 @@ public class MenuActivity extends Activity implements OnClickListener {
             startActivity(intent);
         }
 
-        if (v == this.btnQuit) {
-            System.exit(0);
-        }
+//        if (v == this.btnQuit) {
+//            System.exit(0);
+//        }
     }
 
     @Override
